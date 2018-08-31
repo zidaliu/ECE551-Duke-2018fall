@@ -1,0 +1,10 @@
+Grading at 08/31/2018:16:34:44.752001
+For commit ID 830fd5831fbf31070447a0114479af4062f55c77
+Checking errors.txt
+Your file matched the expected output
+errors.txt is correct.
+Checking the syntax in code.c
+code.c has legal syntax
+Your file matched the expected output
+
+Overall Grade: PASSED
