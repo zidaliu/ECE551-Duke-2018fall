@@ -1,7 +1,0 @@
-Grading at 09/07/2018:01:33:22.800564
-For commit ID a9b6e1b91f50e3652ed69e0f6fbcf4e74e9ee886
-Checking for 'void retirement(int startAge, double initial, retire_info_t working, retire_info_t retired)'
-[31mERROR: there is no function 'void retirement(int startAge, double initial, retire_info_t working, retire_info_t retired)'
-in your source code 'retirement.c'[0m
-[31mCannot continue testing[0m
-Overall Grade: F

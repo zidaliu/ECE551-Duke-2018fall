@@ -7,7 +7,7 @@ struct retire_info_tag {
   double rate_of_return;
 };
 typedef struct retire_info_tag retire_info_t;
-void retirement(int startAge, double inital, retire_info_t working, retire_info_t retired);
+
 double work_retire(int startAge, int Num_month, double total_money, retire_info_t info) {
   for (int i = 0; i < Num_month; i++) {
     int this_year = (startAge + i) / 12;
@@ -18,10 +18,10 @@ double work_retire(int startAge, int Num_month, double total_money, retire_info_
   return total_money;
 }
 
-void retirement(int startAge, double inital, retire_info_t working, retire_info_t retired) {
+void retirement(int startAge, double initial, retire_info_t working, retire_info_t retired) {
   int Num_month_work = working.months;
   int Num_month_retire = retired.months;
-  double total_money = inital;
+  double total_money = initial;
   total_money = work_retire(startAge, Num_month_work, total_money, working);
   work_retire(startAge + working.months, Num_month_retire, total_money, retired);
 }
