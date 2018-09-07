@@ -7,7 +7,7 @@ struct retire_info_tag {
   double rate_of_return;
 };
 typedef struct retire_info_tag retire_info_t;
-
+void retirement(int startAge, double inital, retire_info_t working, retire_info_t retired);
 double work_retire(int startAge, int Num_month, double total_money, retire_info_t info) {
   for (int i = 0; i < Num_month; i++) {
     int this_year = (startAge + i) / 12;
@@ -15,7 +15,6 @@ double work_retire(int startAge, int Num_month, double total_money, retire_info_
     printf("Age %3d month %2d you have $%.2lf\n", this_year, this_month, total_money);
     total_money = total_money * (1 + info.rate_of_return) + info.contribution;
   }
-  printf("这是总钱数$%.2lf\n", total_money);
   return total_money;
 }
 
