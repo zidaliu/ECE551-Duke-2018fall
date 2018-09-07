@@ -38,4 +38,5 @@ int main(void) {
   int starage = 327;
   double saving = 21345;
   retirement(starage, saving, working, retire);
+  return 0;
 }
