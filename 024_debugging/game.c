@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <sys/time.h>
 
-int getSecretNumber(void); // prototype, implemented elsewhere.
+int getSecretNumber(void);  // prototype, implemented elsewhere.
 
-int getOtherSN(int which); // prototype, implemented elsewhere.
+int getOtherSN(int which);  // prototype, implemented elsewhere.
 
 int main(void) {
   int guessesMade = 0;
