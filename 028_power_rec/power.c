@@ -1,8 +1,8 @@
-unsigned power(unsigned x, unsigned n) {
-  if (0 == n)
+unsigned power(unsigned x, unsigned y) {
+  if (0 == y)
     return 1;
-  else if (1 == n)
+  else if (1 == y)
     return x;
   else
-    return x * power(x, n - 1);
+    return x * power(x, y - 1);
 }
