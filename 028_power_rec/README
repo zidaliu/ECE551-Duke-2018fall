@@ -17,4 +17,4 @@ assignment into this directory:
   ln -s ../027_tests_power/test-power.c ./
 
 You should then write a Makefile that will compile each C file
-separately to an object file and link them together.
+eparately to an object file and link them together.
