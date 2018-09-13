@@ -1,5 +1,5 @@
-Grading at 09/13/2018:16:25:39.067258
-For commit ID 3f65fbdcdd38d09f08abbd8197789406e9821ed0
+Grading at 09/13/2018:16:31:49.782413
+For commit ID 4ece208904016d4799caf119a0da14687f005978
 [32mSuccessfully compiled ['power.c'].[0m
 [32msuccessfully compiled code[0m
 Checking for 'unsigned-int power(unsigned-int x, unsigned-int y)'
