@@ -15,5 +15,6 @@ int main(void) {
   run_check(-3, 3, -27);
   run_check(0, 0, 1);
   run_check(0.1, 2, 0.01);
+  printf("successful\n");
   return 0;
 }
