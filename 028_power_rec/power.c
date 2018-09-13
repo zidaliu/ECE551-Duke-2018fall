@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
 unsigned power(unsigned x, unsigned n) {
   if (0 == n)
     return 1;
