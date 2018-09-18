@@ -1,0 +1,46 @@
+// This file is for Step 3.
+#include <stdio.h>
+#include <stdlib.h>
+// You should do
+//  Step 3 (A): write seq3
+int seq3(int x, int y) {
+  int z;
+  z = -8 * x - 3 * y - 25;
+  return z;
+}
+
+int countEvenInSeq3Range(int xLow, int xHi, int yLow, int yHi) {
+  int sum = 0;
+  if ((xLow < xHi) && (yLow < yHi)) {
+    for (int i = xLow; i < xHi; i++) {
+      for (int j = yLow; j < yHi; j++) {
+        int temp = seq3(i, j);
+        if (temp % 2 == 0) {
+          sum++;
+        }
+      }
+    }
+    return sum;
+  }
+  else {
+    return 0;
+  }
+}
+
+//  Step 3 (B): write main to test seq3
+int main(void) {
+  printf("seq3(%d,%d) = %d\n", -4, -5, seq3(-4, -5));
+  printf("seq3(%d,%d) = %d\n", 4, -5, seq3(4, -5));
+  printf("seq3(%d,%d) = %d\n", -3, -5, seq3(-3, -5));
+  printf("seq3(%d,%d) = %d\n", -4, 2, seq3(-4, -2));
+  printf(
+      "countEvenInSeq3Range(%d, %d, %d, %d) = %d\n", 0, 2, 0, 3, countEvenInSeq3Range(0, 2, 0, 3));
+  printf(
+      "countEvenInSeq3Range(%d, %d, %d, %d) = %d\n", 0, 5, 0, 6, countEvenInSeq3Range(0, 5, 0, 6));
+  printf(
+      "countEvenInSeq3Range(%d, %d, %d, %d) = %d\n", 6, 2, 0, 3, countEvenInSeq3Range(6, 2, 0, 3));
+}
+//  Step 3 (C): write countEvenInSeq3Range
+//  Step 3 (D): add test cases to main to test countEvenInSeq3Range
+//
+// Be sure to #include any header files you need!
