@@ -1,0 +1,37 @@
+Grading at 09/20/2018:17:19:22.068123
+For commit ID a8eef29eb91d5f81037258ebf4c16f0235d781b3
+[32mSuccessfully compiled ['step1.c'].[0m
+Checking for 'int seq1(int x)'
+[32mfound 'int seq1(int x)' in your source code 'step1.c'[0m
+Checking for 'void printSeq1Range(int low, int high)'
+[31mERROR: there is no function 'void printSeq1Range(int low, int high)'
+in your source code 'step1.c'[0m
+[32mno spurious debug output in step1.c[0m
+[32mSuccessfully compiled ['step2.c'].[0m
+Checking for 'int seq2(int x)'
+[32mfound 'int seq2(int x)' in your source code 'step2.c'[0m
+Checking for 'int sumSeq2(int low, int high)'
+[31mERROR: there is no function 'int sumSeq2(int low, int high)'
+in your source code 'step2.c'[0m
+step2.c: In function ‘old_mainBbsfNJ’:
+step2.c:23:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
+cc1: all warnings being treated as errors
+
+[31mError: failed to compile your code[0m
+[31merror there is output in your function seq() in step2.c[0m
+[32mSuccessfully compiled ['step3.c'].[0m
+Checking for 'int seq3(int x, int y)'
+[32mfound 'int seq3(int x, int y)' in your source code 'step3.c'[0m
+Checking for 'int countEvenInSeq3Range(int xLow, int xHi, int yLow, int yHi)'
+[32mfound 'int countEvenInSeq3Range(int xLow, int xHi, int yLow, int yHi)' in your source code 'step3.c'[0m
+step3.c: In function ‘old_mainFTJHmb’:
+step3.c:42:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
+cc1: all warnings being treated as errors
+
+[31mError: failed to compile your code[0m
+[31merror there is output in your function seq() in step3.c[0m
+Overall Grade: NO GRADE YET
