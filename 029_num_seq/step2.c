@@ -9,7 +9,7 @@ int seq2(int x) {
   return y;
 }
 
-int sumSeq2(int x, int y);
+int sumSeq2(int low, int high);
 
 //  Step 2 (B): write main to test seq2
 int main(void) {
@@ -20,12 +20,13 @@ int main(void) {
   printf("sumSeq2(%d,%d) = %d\n", 0, 2, sumSeq2(0, 2));
   printf("sumSeq2(%d,%d) = %d\n", 3, 6, sumSeq2(3, 6));
   printf("sumSeq2(%d,%d) = %d\n", 9, 7, sumSeq2(9, 7));
+  return 0;
 }
 //  Step 2 (C): write sumSeq2
-int sumSeq2(int x, int y) {
+int sumSeq2(int low, int high) {
   int sum = 0;
-  if (x < y) {
-    for (int i = x; i < y; i++) {
+  if (low < high) {
+    for (int i = low; i < high; i++) {
       sum += seq2(i);
     }
     return sum;

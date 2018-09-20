@@ -7,7 +7,7 @@ int seq1(int x) {
   return y;
 }  //  Step 1 (A): write seq1
 
-void printSeq1Range(int a, int b);
+void printSeq1Range(int low, int high);
 
 int main(void) {
   int a = 0;
@@ -29,11 +29,11 @@ int main(void) {
   return 0;
 }  //  Step 1 (B): write main to test seq1
 
-void printSeq1Range(int a, int b) {
-  if (a < b) {
-    for (int i = a; i < b; i++) {
+void printSeq1Range(int low, int high) {
+  if (low < high) {
+    for (int i = low; i < high; i++) {
       printf("%d", seq1(i));
-      if (i != (b - 1)) {
+      if (i != (high - 1)) {
         printf(", ");
       }
       else {

@@ -39,6 +39,7 @@ int main(void) {
       "countEvenInSeq3Range(%d, %d, %d, %d) = %d\n", 0, 5, 0, 6, countEvenInSeq3Range(0, 5, 0, 6));
   printf(
       "countEvenInSeq3Range(%d, %d, %d, %d) = %d\n", 6, 2, 0, 3, countEvenInSeq3Range(6, 2, 0, 3));
+  return 0;
 }
 //  Step 3 (C): write countEvenInSeq3Range
 //  Step 3 (D): add test cases to main to test countEvenInSeq3Range
