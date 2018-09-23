@@ -20,7 +20,7 @@ void reverse(char * str) {
   if (n == 0) {
     return;
   }
-  else if (n % 2 == 0) {
+  if (n % 2 == 0) {
     for (int i = 0; i <= (n - 2) / 2; i++) {
       swap(str + i, str + n - 1 - i);
     }
