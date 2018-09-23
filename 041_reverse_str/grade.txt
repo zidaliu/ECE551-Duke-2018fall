@@ -1,0 +1,15 @@
+Grading at 09/23/2018:21:36:56.770515
+For commit ID 4dcff1c2b1db0e63c8e1067849678a5da1dd2491
+[32mSuccessfully compiled ['reverse.c'].[0m
+********************test case 1********************
+Exit status of your code: 0
+[32mCorrect: your output matched the expected output.[0m
+[32mpassed test case 1[0m
+removing your main() and replacing it with out own to run more tests...
+[32mSuccessfully compiled ['reverse.c'].[0m
+********************test case 2********************
+check empty inputs
+Exit status of your code: 139
+[31mtest case 2 Error: Your program had segmentation fault[0m
+[31mCannot continue testing[0m
+Overall Grade: F
