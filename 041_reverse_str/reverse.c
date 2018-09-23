@@ -16,7 +16,7 @@ void reverse(char * str) {
   }
 
   size_t n = strlen(str);
-  if (n == 0) {
+  if (n == 0 || n == 1) {
     return;
   }
   if (n % 2 == 0) {
