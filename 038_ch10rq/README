@@ -1,4 +1,4 @@
-As always, read and understand Chapter 10, then answer these
+3As always, read and understand Chapter 10, then answer these
 questions in "answers.txt".
 
  1. Consider the following loop, which iterates over a string s,
@@ -40,7 +40,7 @@ questions in "answers.txt".
  J. const char * const *
 
  3. Suppose you did not pick the most correct type to replace
-    /* SOME TYPE */ above, but instead, you picked a type that
+ EE   /* SOME TYPE */ above, but instead, you picked a type that
     compiled and permitted the following line of code:
 
     *s = 'B';
