@@ -2,29 +2,34 @@
 #include <stdlib.h>
 #include <string.h>
 
-void swap(char *a, char *b) {
-    char temp;
-    temp = *b;
-    *b = *a;
-    *a = temp;
+void swap(char * a, char * b) {
+  char temp;
+  temp = *b;
+  *b = *a;
+  *a = temp;
 }
 
 void reverse(char * str) {
-    //WRITE ME!
-    size_t n = strlen(str);
-    if (n == 0) {
-        return;
+  //WRITE ME!
+
+  if (!str) {  //Null Pointer
+    return;
+  }
+
+  size_t n = strlen(str);
+  if (n == 0) {
+    return;
+  }
+  else if (n % 2 == 0) {
+    for (int i = 0; i <= (n - 2) / 2; i++) {
+      swap(str + i, str + n - 1 - i);
     }
-    else if (n % 2 == 0) {
-        for (int i = 0; i <= (n - 2) / 2 ; i++) {
-            swap(str+i, str+n - 1 - i);
-        }
+  }
+  else {
+    for (int i = 0; i <= (n - 1) / 2 - 1; i++) {
+      swap(&(str[i]), &(str[n - 1 - i]));
     }
-    else {
-        for (int i = 0; i <= (n - 1) / 2 - 1; i++) {
-            swap(&(str[i]), &(str[n - 1 - i]));
-        }
-    }
+  }
 }
 
 int main(void) {
