@@ -1,5 +1,5 @@
-Grading at 09/23/2018:21:36:56.770515
-For commit ID 4dcff1c2b1db0e63c8e1067849678a5da1dd2491
+Grading at 09/23/2018:21:46:22.162546
+For commit ID e0f98afe8f9af9ed3441b23925f0957dd0cf77e4
 [32mSuccessfully compiled ['reverse.c'].[0m
 ********************test case 1********************
 Exit status of your code: 0
@@ -9,7 +9,23 @@ removing your main() and replacing it with out own to run more tests...
 [32mSuccessfully compiled ['reverse.c'].[0m
 ********************test case 2********************
 check empty inputs
+Exit status of your code: 0
+[32mValgrind was clean[0m
+[32mCorrect: your output matched the expected output.[0m
+[32mpassed test case 2[0m
+********************test case 3********************
+check empty string
+Exit status of your code: 0
+[32mValgrind was clean[0m
+[32mCorrect: your output matched the expected output.[0m
+[32mpassed test case 3[0m
+********************test case 4********************
+Exit status of your code: 0
+[32mValgrind was clean[0m
+[32mCorrect: your output matched the expected output.[0m
+[32mpassed test case 4[0m
+********************test case 5********************
 Exit status of your code: 139
-[31mtest case 2 Error: Your program had segmentation fault[0m
+[31mtest case 5 Error: Your program had segmentation fault[0m
 [31mCannot continue testing[0m
 Overall Grade: F
