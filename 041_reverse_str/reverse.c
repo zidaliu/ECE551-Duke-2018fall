@@ -11,7 +11,6 @@ void swap(char * a, char * b) {
 
 void reverse(char * str) {
   //WRITE ME!
-
   if (!str) {  //Null Pointer
     return;
   }
