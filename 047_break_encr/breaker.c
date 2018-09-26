@@ -25,7 +25,7 @@ int comKey(FILE * f) {
     }
   }
   max = findMax(freq, 26);
-  return max - 4;
+  return (max + 22) % 26;
 }
 
 int main(int argc, char ** argv) {
