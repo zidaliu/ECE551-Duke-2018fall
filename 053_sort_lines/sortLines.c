@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 //This function is used to figure out the ordering
 //of the strings in qsort.  You do not need
 //to modify it.
@@ -17,8 +16,63 @@ void sortData(char ** data, size_t count) {
 }
 
 int main(int argc, char ** argv) {
-  
-  //WRITE YOUR CODE HERE!
-  
+  if (argc == 1) {
+    char ** line = NULL;
+    char * curr = NULL;
+    size_t sz = 0;
+    size_t i = 0;
+    while (getline(&curr, &sz, stdin) != -1) {
+      line = realloc(line, (i + 1) * sizeof(*line));
+      line[i] = curr;
+      curr = NULL;
+      i++;
+    }
+    free(curr);
+    sortData(line, i);
+    for (size_t j = 0; j < i; j++) {
+      printf("%s", line[j]);
+      free(line[j]);
+    }
+    free(line);
+  }
+
+  else {
+    FILE * f;
+    //read files one by one
+    for (int n = 1; n < argc; n++) {
+      char ** line = NULL;
+      char * curr = NULL;
+      size_t sz = 0;
+      size_t i = 0;
+      f = fopen(argv[n], "r");
+      //file doesn't exist
+      if (f == NULL) {
+        fprintf(stderr, "failed to open file %s\n", argv[1]);
+        exit(EXIT_FAILURE);
+      }
+      //file exists
+      else {
+        while (getline(&curr, &sz, f) != -1) {
+          line = realloc(line, (i + 1) * sizeof(*line));
+          line[i] = curr;
+          curr = NULL;
+          i++;
+        }
+        free(curr);
+        sortData(line, i);
+        // print sorted files
+        for (size_t j = 0; j < i; j++) {
+          printf("%s", line[j]);
+          free(line[j]);
+        }
+        free(line);
+      }
+      if (fclose(f) != 0) {
+        fprintf(stderr, "failed to close input\n");
+        exit(EXIT_FAILURE);
+      }
+    }
+  }
+
   return EXIT_SUCCESS;
 }
