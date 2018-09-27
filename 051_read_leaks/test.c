@@ -16,11 +16,9 @@ int main(void) {
   int ** r = &q;
   p[0] = f(1);
   *r = NULL;
-  free(p);
   q = malloc(2 * sizeof(*q));
-  p = q;
   free(p);
-  q = NULL;
+  p = q;
   q = NULL;
   free(p);
   return EXIT_SUCCESS;
