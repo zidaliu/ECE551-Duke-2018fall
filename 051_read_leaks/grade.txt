@@ -1,8 +1,9 @@
-Grading at 09/27/2018:15:08:38.683314
-For commit ID 42fec254142ebb901281e71870f03f2ed3f0bbf3
+Grading at 09/27/2018:15:13:19.295588
+For commit ID 48ef2bfb69c1fa9ec429a3c0fc4c19fccbeb58f0
 Your file matched the expected output
 Your output matched what we expected
 Attempting to compile test.c
-valgrind reported memory errors
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 
-Overall Grade: C
+Overall Grade: A
