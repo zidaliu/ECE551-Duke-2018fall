@@ -19,12 +19,9 @@ int main(void) {
   free(p);
   q = malloc(2 * sizeof(*q));
   p = q;
-<<<<<<< HEAD
   free(p);
   q = NULL;
-=======
   q = NULL;
   free(p);
->>>>>>> 5e02df56dad2eb125a1a66ecd86db9baf7996374
   return EXIT_SUCCESS;
 }
