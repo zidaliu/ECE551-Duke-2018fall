@@ -11,7 +11,7 @@ void printMatrix(char matrix[10][10]) {
   }
 }
 
-void read_line(char matrix_line[], FILE * f) {
+void read_line(char matrix_line[10], FILE * f) {
   int i = 0;
   for (;;) {
     int ch = fgetc(f);
@@ -21,20 +21,16 @@ void read_line(char matrix_line[], FILE * f) {
           return;
         }
         else {
-          fprintf(stderr, "New line too quick");
+          fprintf(stderr, "New line comes too quick");
           exit(EXIT_FAILURE);
         }
         break;
+
       case EOF:
-        if (i == 10) {
-          fprintf(stderr, "ECF too quick at line end(short)");
-          exit(EXIT_FAILURE);
-        }
-        else {
-          fprintf(stderr, "ECF too quick at middle");
-          exit(EXIT_FAILURE);
-        }
+        fprintf(stderr, "ECF too quick, line is too short\n");
+        exit(EXIT_FAILURE);
         break;
+
       default:
         if (i < 10) {
           matrix_line[i++] = (char)ch;
@@ -61,7 +57,7 @@ int main(int argc, char ** argv) {
     exit(EXIT_FAILURE);
   }
   for (int i = 0; i < 10; i++) {
-    read_line(matrix[i], f);
+    read_line(*(matrix + i), f);
   }
   if ((ch = fgetc(f)) != EOF) {
     fprintf(stderr, "Too much line\n");
