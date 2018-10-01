@@ -11,33 +11,54 @@ state_t parseLine(const char * line) {
   int lenth_colon_2 = 0;  //index of the state's population
   int lenth_colon_3 = 0;  //index of the state's electoralvotes
   int i = 0, j = 0, k = 0;
-  char population[50];
-  char electoralVotes[20];
+  char population[20];
+  char electoralVotes[5];
   char * ptr;
-
-  //store the state's name
+  /*store the state's name*/
   while (line[lenth_colon_1] != ':') {
     line_struct.name[i] = line[lenth_colon_1];
     i++;
     lenth_colon_1++;
+    if (i == MAX_STATE_NAME_LENGTH) {  //whether lenth overflow"
+      fprintf(stderr,
+              "In your file, you shouldn't input more than %d characters\n",
+              MAX_STATE_NAME_LENGTH);
+      exit(EXIT_FAILURE);
+    }
   }
   line_struct.name[lenth_colon_1] = '\0';
   lenth_colon_2 = lenth_colon_1 + 1;
-  //store the state's population
+  /*store the state's population*/
   while (line[lenth_colon_2] != ':') {
+    if (!(line[lenth_colon_2] >= '0' && line[lenth_colon_2] <= '9')) {
+      fprintf(stderr, "In your file, the population has none number characters\n");
+      exit(EXIT_FAILURE);
+    }
     population[j] = line[lenth_colon_2];
     j++;
     lenth_colon_2++;
+    if (j == 20) {
+      fprintf(stderr, "In your file, the population must be too much\n");
+      exit(EXIT_FAILURE);
+    }
   }
   population[j] = '\0';
   lenth_colon_3 = lenth_colon_2 + 1;
   uint64_t temp_popu = strtoul(population, &ptr, 10);
   line_struct.population = temp_popu;
-  //store the state's electoralvotes
+  /*store the state's electoralvotes*/
   while (line[lenth_colon_3] != '\0') {
+    if (!(line[lenth_colon_3] >= '0' && line[lenth_colon_3] <= '9')) {
+      fprintf(stderr, "In your file, the electoralvotes has none number characters\n");
+      exit(EXIT_FAILURE);
+    }
     electoralVotes[k] = line[lenth_colon_3];
     k++;
     lenth_colon_3++;
+    if (k == 5) {
+      fprintf(stderr, "In your file, the electorVotes must be too much\n");
+      exit(EXIT_FAILURE);
+    }
   }
   electoralVotes[k] = '\0';
   unsigned temp_ele = strtoul(electoralVotes, &ptr, 10);
