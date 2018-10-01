@@ -1,5 +1,5 @@
-Grading at 09/29/2018:21:51:46.900324
-For commit ID c02a2eab4578db549fb57e308e7ad1718f6ee781
+Grading at 10/01/2018:00:24:58.373091
+For commit ID 6f3f344a7bfaa8c369ef52a4961a73dae1a0996a
 [32mfind func state_t  parseLine(const char * line)[0m
 [32mfind func unsigned int countElectoralVotes(state_t * stateData, uint64_t * voteCounts, size_t   nStates)[0m
 [32mfind func void printRecounts(state_t * stateData, uint64_t * voteCounts, size_t nStates)[0m
