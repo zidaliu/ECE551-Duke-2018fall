@@ -27,18 +27,19 @@ kvarray_t * readKVs(const char * fname) {
   }
   char * curr = NULL;
   size_t sz = 0;
-  size_t i = 0;
+  int i = 0;
   kvpair_t * temp_arraykv = NULL;
-  kvarray_t * arr;
+  kvarray_t * arr = NULL;
 
-  arr = malloc(sizeof(*arr));
   if (arr == NULL) {
     exit(EXIT_FAILURE);
   }
 
+  arr = malloc(sizeof *arr);
   while (getline(&curr, &sz, f) >= 0) {
     temp_arraykv = realloc(temp_arraykv, (i + 1) * sizeof(*temp_arraykv));
     kvLine(&temp_arraykv[i], curr);
+    curr = NULL;
     i++;
   }
   free(curr);
