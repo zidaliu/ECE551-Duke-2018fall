@@ -1,10 +1,10 @@
-#include "kv.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-static void kvLine(kvpair_t * kvpair, char * line) {
+#include "kv.h"
+
+void kvLine(kvpair_t * kvpair, char * line) {
   char *p, *q;
   p = strchr(line, '=');
   if (p == NULL) {
@@ -18,7 +18,7 @@ static void kvLine(kvpair_t * kvpair, char * line) {
   kvpair->value = strndup(p, (size_t)(q - p));
 }
 
-kvarray_t * readKVs(const char * fname) {
+static kvarray_t * readKVs(const char * fname) {
   //WRITE ME
   FILE * f = fopen(fname, "r");
   if (f == NULL) {
@@ -26,16 +26,16 @@ kvarray_t * readKVs(const char * fname) {
     exit(EXIT_FAILURE);
   }
   char * curr = NULL;
-  size_t sz = 0;
+  size_t sz;
   int i = 0;
   kvpair_t * temp_arraykv = NULL;
-  kvarray_t * arr = NULL;
+  kvarray_t * arr;
 
+  arr = malloc(sizeof(*arr));
   if (arr == NULL) {
     exit(EXIT_FAILURE);
   }
 
-  arr = malloc(sizeof *arr);
   while (getline(&curr, &sz, f) >= 0) {
     temp_arraykv = realloc(temp_arraykv, (i + 1) * sizeof(*temp_arraykv));
     kvLine(&temp_arraykv[i], curr);
@@ -43,7 +43,6 @@ kvarray_t * readKVs(const char * fname) {
     i++;
   }
   free(curr);
-  fclose(f);
   arr->lenthkv = i;
   arr->arraykv = temp_arraykv;
   return arr;
