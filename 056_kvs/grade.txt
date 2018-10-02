@@ -1,5 +1,5 @@
-Grading at 10/02/2018:21:41:40.112096
-For commit ID d03ceb7f13aaa72e66d4df726769272e8304ce4e
+Grading at 10/02/2018:21:51:10.364778
+For commit ID f114b45cd39a100d66db789e80de87470704373a
 ********************test case 1********************
 Exit status of your code: 0
 [31mtest case 1 Error: valgrind was not clean,here are error suggestions:[0m
