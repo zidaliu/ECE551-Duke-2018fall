@@ -1,19 +1,22 @@
-Grading at 10/02/2018:21:51:10.364778
-For commit ID f114b45cd39a100d66db789e80de87470704373a
+Grading at 10/02/2018:22:23:07.611920
+For commit ID 504d353f10d482fb393c44bfa0a90a1015959f2f
 ********************test case 1********************
-Exit status of your code: 0
-[31mtest case 1 Error: valgrind was not clean,here are error suggestions:[0m
-[31m1 Memory leak error: detected direct lost[0m
+Exit status of your code: 1
+[32mValgrind was clean[0m
+Your output has 0 lines, but we expected 12 lines.
+[31mIncorrect: your output did not match the expected output.[0m
 [31mfailed test case 1[0m
 ********************test case 2********************
-Exit status of your code: 0
-[31mtest case 2 Error: valgrind was not clean,here are error suggestions:[0m
-[31m1 Memory leak error: detected direct lost[0m
+Exit status of your code: 1
+[32mValgrind was clean[0m
+Your output has 0 lines, but we expected 12 lines.
+[31mIncorrect: your output did not match the expected output.[0m
 [31mfailed test case 2[0m
 ********************test case 3********************
-Exit status of your code: 0
+Exit status of your code: 1
 [32mValgrind was clean[0m
-[32mCorrect: your output matched the expected output.[0m
-[32mpassed test case 3[0m
-[31mfailed 2 out of 3 test cases[0m
+Your output has 0 lines, but we expected 6 lines.
+[31mIncorrect: your output did not match the expected output.[0m
+[31mfailed test case 3[0m
+[31mfailed 3 out of 3 test cases[0m
 Overall Grade: F
