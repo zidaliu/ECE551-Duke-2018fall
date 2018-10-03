@@ -3,11 +3,16 @@
 #include <stdio.h>
 struct _one_count_t {
   //DEFINE ME
+  char * name;
+  int number;
 };
 typedef struct _one_count_t one_count_t;
 
 struct _counts_t {
   //DEFINE ME
+  one_count_t * name_list;
+  size_t len;
+  int unknown;
 };
 typedef struct _counts_t counts_t;
 
