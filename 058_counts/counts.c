@@ -21,7 +21,6 @@ void addCount(counts_t * c, const char * name) {
     return;
   }
   for (i = 0; i < c->len; i++) {
-    printf("name = %s\n", name);
     if (strcmp(c->name_list[i].name, name) == 0) {
       c->name_list[i].number++;
       flag = 1;
