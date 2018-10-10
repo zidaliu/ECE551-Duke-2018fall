@@ -39,8 +39,8 @@ kvarray_t * readKVs(const char * fname) {
   while (getline(&curr, &sz, f) >= 0) {
     temp_arraykv = realloc(temp_arraykv, (i + 1) * sizeof(*temp_arraykv));
     kvLine(&temp_arraykv[i], curr);
-    free(curr);
-    curr = NULL;
+    /* free(curr);
+    curr = NULL;*/
     i++;
   }
   free(curr);
