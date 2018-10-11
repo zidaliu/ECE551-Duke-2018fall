@@ -1,0 +1,8 @@
+  File: test.sh
+  Size: 104       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 115434114   Links: 1
+Access: (0775/-rwxrwxr-x)  Uid: ( 1285/   zl186)   Gid: ( 1288/   zl186)
+Access: 2018-10-11 09:20:46.388976520 -0400
+Modify: 2018-10-10 23:08:55.046550405 -0400
+Change: 2018-10-10 23:08:55.046550405 -0400
+ Birth: -

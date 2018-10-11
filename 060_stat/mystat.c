@@ -1,0 +1,239 @@
+#include <ctype.h>
+#include <grp.h>
+#include <pwd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <sys/sysmacros.h>
+#include <sys/types.h>
+#include <time.h>
+#include <unistd.h>
+//This function is for Step 4
+char * time2str(const time_t * when, long ns) {
+  char * ans = malloc(128 * sizeof(*ans));
+  char temp1[64];
+  char temp2[32];
+  const struct tm * t = localtime(when);
+  strftime(temp1, 512, "%Y-%m-%d %H:%M:%S", t);
+  strftime(temp2, 32, "%z", t);
+  snprintf(ans, 128, "%s.%09ld %s", temp1, ns, temp2);
+  return ans;
+}
+
+void printIfo(const char * path);
+char * permissions(struct stat buff);
+void printfTime(const char * string, struct stat buff);
+
+int main(int argc, char ** argv) {
+  if (argc < 2) {
+    fprintf(stderr, "Not input right format\n");
+    exit(EXIT_FAILURE);
+  }
+
+  for (int i = 1; i < argc; i++) {
+    printIfo(argv[i]);
+  }
+  return 0;
+}
+
+void printfTime(const char * string, struct stat buff) {
+  char * time;
+
+  switch (string[0]) {
+    case 'A':
+      time = time2str(&buff.st_atime, buff.st_atim.tv_nsec);
+      break;
+    case 'M':
+      time = time2str(&buff.st_mtime, buff.st_mtim.tv_nsec);
+      break;
+    case 'C':
+      time = time2str(&buff.st_ctime, buff.st_ctim.tv_nsec);
+      break;
+  }
+
+  printf("%s: %s\n", string, time);
+  free(time);
+}
+
+char * permissions(struct stat buff) {
+  char * string = NULL;
+  char c = {0};
+  string = malloc(11 * sizeof(*string));
+  switch (buff.st_mode & S_IFMT) {
+    case S_IFBLK:
+      c = 'b';
+      break;
+    case S_IFCHR:
+      c = 'c';
+      break;
+    case S_IFDIR:
+      c = 'd';
+      break;
+    case S_IFIFO:
+      c = 'p';
+      break;
+    case S_IFLNK:
+      c = 'l';
+      break;
+    case S_IFREG:
+      c = '-';
+      break;
+    case S_IFSOCK:
+      c = 's';
+      break;
+  }
+  string[0] = c;
+  if ((buff.st_mode & S_IRUSR) != 0) {
+    string[1] = 'r';
+  }
+  else {
+    string[1] = '-';
+  }
+
+  if ((buff.st_mode & S_IWUSR) != 0) {
+    string[2] = 'w';
+  }
+  else {
+    string[2] = '-';
+  }
+
+  if ((buff.st_mode & S_IXUSR) != 0) {
+    string[3] = 'x';
+  }
+  else {
+    string[3] = '-';
+  }
+
+  //group
+  if ((buff.st_mode & S_IRGRP) != 0) {
+    string[4] = 'r';
+  }
+  else {
+    string[4] = '-';
+  }
+
+  if ((buff.st_mode & S_IWGRP) != 0) {
+    string[5] = 'w';
+  }
+  else {
+    string[5] = '-';
+  }
+
+  if ((buff.st_mode & S_IXGRP) != 0) {
+    string[6] = 'x';
+  }
+  else {
+    string[6] = '-';
+  }
+  //other
+  if ((buff.st_mode & S_IROTH) != 0) {
+    string[7] = 'r';
+  }
+  else {
+    string[7] = '-';
+  }
+
+  if ((buff.st_mode & S_IWOTH) != 0) {
+    string[8] = 'w';
+  }
+  else {
+    string[8] = '-';
+  }
+
+  if ((buff.st_mode & S_IXOTH) != 0) {
+    string[9] = 'x';
+  }
+  else {
+    string[9] = '-';
+  }
+
+  string[10] = '\0';
+  return string;
+}
+
+void printIfo(const char * path) {
+  struct stat buff;
+  const char * filetype = NULL;
+  char * permission = NULL;
+  struct passwd * ownerName;
+  struct group * groupName;
+  if (lstat(path, &buff) < 0) {
+    fprintf(stderr, "NO stat\n");
+    exit(EXIT_FAILURE);
+  }
+
+  switch (buff.st_mode & S_IFMT) {
+    case S_IFBLK:
+      filetype = "block special file";
+      break;
+    case S_IFCHR:
+      filetype = "character special file";
+      break;
+    case S_IFDIR:
+      filetype = "directory";
+      break;
+    case S_IFIFO:
+      filetype = "fifo";
+      break;
+    case S_IFLNK:
+      filetype = "symbolic link";
+      break;
+    case S_IFREG:
+      filetype = "regular file";
+      break;
+    case S_IFSOCK:
+      filetype = "socket";
+      break;
+  }
+
+  if (S_ISLNK(buff.st_mode)) {
+    char linktarget[256];
+    ssize_t len = readlink(path, linktarget, 256);
+    if (len > 255) {
+      linktarget[255] = '\0';
+    }
+    else {
+      linktarget[len] = '\0';
+    }
+    printf("  File: %s->> %s\n", path, linktarget);
+  }
+  else {
+    printf("  File: %s\n", path);
+  }
+  printf("  Size: %-10lu\tBlocks: %-10lu IO Block: %-6lu %s\n",
+         buff.st_size,
+         buff.st_blocks,
+         buff.st_blksize,
+         filetype);
+  if (S_ISCHR(buff.st_mode) || S_ISBLK(buff.st_mode)) {
+    printf("Device: %lxh/%lud\tInode: %-10lu  Links: %-5lu Device type: %d,%d\n",
+           buff.st_dev,
+           buff.st_dev,
+           buff.st_ino,
+           buff.st_nlink,
+           major(buff.st_rdev),
+           minor(buff.st_rdev));
+  }
+  else {
+    printf("Device: %lxh/%lud\tInode: %-10lu  Links: %lu\n",
+           buff.st_dev,
+           buff.st_dev,
+           buff.st_ino,
+           buff.st_nlink);
+  }
+  permission = permissions(buff);
+  ownerName = getpwuid(buff.st_uid);
+  groupName = getgrgid(buff.st_gid);
+  printf("Access: (%04o/%s)  Uid: (%5d/%8s)   Gid: (%5d/%8s)\n",
+         buff.st_mode & ~S_IFMT,
+         permission,
+         buff.st_uid,
+         ownerName->pw_name,
+         buff.st_gid,
+         groupName->gr_name);
+  printfTime("Access", buff);
+  printfTime("Modify", buff);
+  printfTime("Change", buff);
+  printf(" Birth: -\n");
+  free(permission);
+}
