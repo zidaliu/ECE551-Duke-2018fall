@@ -9,11 +9,6 @@
 #include <time.h>
 #include <unistd.h>
 //This function is for Step 4
-
-void printIfo(const char * path, int i, int len);  //print all the Info
-char * permissions(struct stat buff);
-void printfTime(const char * string, struct stat buff);
-
 char * time2str(const time_t * when, long ns) {
   char * ans = malloc(128 * sizeof(*ans));
   char temp1[64];
@@ -25,14 +20,18 @@ char * time2str(const time_t * when, long ns) {
   return ans;
 }
 
+void printIfo(const char * path);
+char * permissions(struct stat buff);
+void printfTime(const char * string, struct stat buff);
+
 int main(int argc, char ** argv) {
   if (argc < 2) {
-    fprintf(stderr, "No right input Format\n");
+    fprintf(stderr, "Not input right format\n");
     exit(EXIT_FAILURE);
   }
 
   for (int i = 1; i < argc; i++) {
-    printIfo(argv[i], i, argc);
+    printIfo(argv[i]);
   }
   return 0;
 }
@@ -41,13 +40,13 @@ void printfTime(const char * string, struct stat buff) {
   char * time;
 
   switch (string[0]) {
-    case 'A':  //Access
+    case 'A':
       time = time2str(&buff.st_atime, buff.st_atim.tv_nsec);
       break;
-    case 'M':  //Modify
+    case 'M':
       time = time2str(&buff.st_mtime, buff.st_mtim.tv_nsec);
       break;
-    case 'C':  //Change
+    case 'C':
       time = time2str(&buff.st_ctime, buff.st_ctim.tv_nsec);
       break;
   }
@@ -152,23 +151,17 @@ char * permissions(struct stat buff) {
   return string;
 }
 
-void printIfo(const char * path, int i, int len) {
+void printIfo(const char * path) {
   struct stat buff;
   const char * filetype = NULL;
   char * permission = NULL;
   struct passwd * ownerName;
   struct group * groupName;
   if (lstat(path, &buff) < 0) {
-    fprintf(stderr, "stat: cannot stat '%s': No such file or directory\n", path);
-    if (i == len - 1) {  //check all the input
-      exit(EXIT_FAILURE);
-    }
-    else {
-      return;  //if the middle is illegal then judge next
-    }
+    fprintf(stderr, "NO stat\n");
+    exit(EXIT_FAILURE);
   }
 
-  /*file type*/
   switch (buff.st_mode & S_IFMT) {
     case S_IFBLK:
       filetype = "block special file";
@@ -193,7 +186,6 @@ void printIfo(const char * path, int i, int len) {
       break;
   }
 
-  /*file name output*/
   if (S_ISLNK(buff.st_mode)) {
     char linktarget[256];
     ssize_t len = readlink(path, linktarget, 256);
@@ -213,8 +205,6 @@ void printIfo(const char * path, int i, int len) {
          buff.st_blocks,
          buff.st_blksize,
          filetype);
-
-  /* whether device*/
   if (S_ISCHR(buff.st_mode) || S_ISBLK(buff.st_mode)) {
     printf("Device: %lxh/%lud\tInode: %-10lu  Links: %-5lu Device type: %d,%d\n",
            buff.st_dev,
@@ -231,8 +221,6 @@ void printIfo(const char * path, int i, int len) {
            buff.st_ino,
            buff.st_nlink);
   }
-
-  /*permission Info*/
   permission = permissions(buff);
   ownerName = getpwuid(buff.st_uid);
   groupName = getgrgid(buff.st_gid);
@@ -243,8 +231,6 @@ void printIfo(const char * path, int i, int len) {
          ownerName->pw_name,
          buff.st_gid,
          groupName->gr_name);
-
-  /*time Info*/
   printfTime("Access", buff);
   printfTime("Modify", buff);
   printfTime("Change", buff);
