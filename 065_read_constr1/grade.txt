@@ -1,6 +1,9 @@
-Grading at 10/14/2018:15:38:54.590329
-For commit ID 25554e9f9fa785eb52de523a7788a0d7a83df0dd
+Grading at 10/14/2018:18:03:48.805609
+For commit ID ece89e3cf7a9135ea351bd74feb60579c5f59350
 Attempting to compile:
-You do not have a Makefile
+g++ -Wall -Wextra -Werror -o code code.cpp
+Your Makefile produced a binary called 'code'
+Your file matched the expected output
+Your output matched what we expected
 
-Overall Grade: FAILED
+Overall Grade: PASSED
