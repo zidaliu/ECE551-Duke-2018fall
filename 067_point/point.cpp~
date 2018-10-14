@@ -1,0 +1,19 @@
+#include "point.h"
+
+#include <stdio.h>
+
+#include <cmath>
+
+void Point::move(double dx, double dy) {
+  x += dx;
+  y += dy;
+}
+
+double Point::distanceFrom(const Point & p) {
+  double distance_x = x - p.x;
+  printf("distance_x:%f", distance_x);
+  double distance_y = y - p.y;
+  printf("distance_y:%f", distance_y);
+  double distance = hypot(distance_x, distance_y);
+  return distance;
+}
