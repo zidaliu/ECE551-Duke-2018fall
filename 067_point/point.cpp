@@ -17,3 +17,11 @@ double Point::distanceFrom(const Point & p) {
   double distance = sqrt(temp_x + temp_y);
   return distance;
 }
+
+double Point::get_x() {
+  return x;
+}
+
+double Point::get_y() {
+  return y;
+}
