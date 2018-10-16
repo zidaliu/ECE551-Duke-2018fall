@@ -167,6 +167,7 @@ char * permissions(struct stat buff) {
   }
   string[0] = c;
   for (int i = 1; i < 10; i++) {
+    /*for every char in strings to call search method*/
     search(&string[i], buff.st_mode, i);
   }
   string[10] = '\0';
