@@ -166,6 +166,7 @@ char * permissions(struct stat buff) {
       break;
   }
   string[0] = c;
+  /*print string[1]-string[9]*/
   for (int i = 1; i < 10; i++) {
     search(&string[i], buff.st_mode, i);
   }
