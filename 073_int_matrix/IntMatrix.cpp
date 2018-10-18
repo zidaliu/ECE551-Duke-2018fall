@@ -20,22 +20,22 @@ IntMatrix::~IntMatrix() {
   delete[] rows;
 }
 IntMatrix & IntMatrix::operator=(const IntMatrix & rhs) {
-  /* if (this != &rhs) {
+  if (this != &rhs) {
     for (int i = 0; i < numRows; i++) {
       delete rows[i];
     }
     delete[] rows;
-    IntArray ** temp = new IntArray *[numRows];
-    for (int i = 0; i < numRows; i++) {
-      temp[i] = new IntArray(numColumns);
+    IntArray ** temp = new IntArray *[rhs.numRows];
+    for (int i = 0; i < rhs.numRows; i++) {
+      temp[i] = new IntArray(rhs.numColumns);
       *temp[i] = *rhs.rows[i];
     }
     this->numRows = rhs.numRows;
     this->numColumns = rhs.numColumns;
     this->rows = temp;
   }
-  return *this;*/
-
+  return *this;
+  /*
   if (this != &rhs) {
     for (int i = 0; i < numRows; i++) {
       delete rows[i];
@@ -50,7 +50,7 @@ IntMatrix & IntMatrix::operator=(const IntMatrix & rhs) {
       *rows[i] = *rhs.rows[i];
     }
   }
-  return *this;
+  return *this;*/
 }
 
 int IntMatrix::getRows() const {
