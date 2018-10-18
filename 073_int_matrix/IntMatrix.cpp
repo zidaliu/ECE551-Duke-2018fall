@@ -1,5 +1,4 @@
 #include "IntMatrix.h"
-
 IntMatrix::IntMatrix() : numRows(0), numColumns(0), rows(NULL) {}
 IntMatrix::IntMatrix(int r, int c) : numRows(r), numColumns(c) {
   rows = new IntArray *[numRows];
@@ -21,36 +20,35 @@ IntMatrix::~IntMatrix() {
   delete[] rows;
 }
 IntMatrix & IntMatrix::operator=(const IntMatrix & rhs) {
-  /*
+  /* if (this != &rhs) {
+    for (int i = 0; i < numRows; i++) {
+      delete rows[i];
+    }
+    delete[] rows;
+    IntArray ** temp = new IntArray *[numRows];
+    for (int i = 0; i < numRows; i++) {
+      temp[i] = new IntArray(numColumns);
+      *temp[i] = *rhs.rows[i];
+    }
+    this->numRows = rhs.numRows;
+    this->numColumns = rhs.numColumns;
+    this->rows = temp;
+  }
+  return *this;*/
+
   if (this != &rhs) {
     for (int i = 0; i < numRows; i++) {
       delete rows[i];
     }
     delete[] rows;
+
+    numRows = rhs.numRows;
+    numColumns = rhs.numColumns;
     rows = new IntArray *[numRows];
     for (int i = 0; i < numRows; i++) {
       rows[i] = new IntArray(numColumns);
       *rows[i] = *rhs.rows[i];
     }
-    this->numRows = rhs.numRows;
-    this->numColumns = rhs.numColumns;
-  }
-  return *this;*/
-
-  if (this == &rhs) {
-    return *this;
-  }
-  for (int i = 0; i < numRows; i++) {
-    delete rows[i];
-  }
-  delete[] rows;
-
-  numRows = rhs.numRows;
-  numColumns = rhs.numColumns;
-  rows = new IntArray *[numRows];
-  for (int i = 0; i < numRows; i++) {
-    rows[i] = new IntArray(numColumns);
-    *rows[i] = *rhs.rows[i];
   }
   return *this;
 }
