@@ -1,0 +1,621 @@
+Current directory is ~/ece551/073_int_matrix/
+GNU gdb (Ubuntu 8.1-0ubuntu3) 8.1.0.20180409-git
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from intMatrixTest...done.
+(gdb) start
+Temporary breakpoint 1 at 0x18fd: file test.cpp, line 3.
+Starting program: /home/zl186/ece551/073_int_matrix/intMatrixTest 
+
+Temporary breakpoint 1, main () at test.cpp:3
+3	int main(void) {
+(gdb) n
+4	  IntMatrix a(4,5);
+(gdb) 
+5	  for (int i = 0; i < a.getRows(); i++) {
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+5	  for (int i = 0; i < a.getRows(); i++) {
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+5	  for (int i = 0; i < a.getRows(); i++) {
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+5	  for (int i = 0; i < a.getRows(); i++) {
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+5	  for (int i = 0; i < a.getRows(); i++) {
+(gdb) 
+10	  std::cout << "a is:\n" << a << std::endl;
+(gdb) 
+11	  IntMatrix b(a);
+(gdb) 
+12	  std::cout << "b is:\n" << a << std::endl;
+(gdb) 
+
+
+13	  if (a == b) {
+(gdb) 14	    std::cout << "a and b have the same contents" << std::endl;
+19	  for (int i = 0; i < b.getRows(); i++) {
+
+
+
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 21	      b[i][j] += i*j;
+20	    for (int j = 0; j < b.getColumns(); j++) {
+
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+19	  for (int i = 0; i < b.getRows(); i++) {
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+19	  for (int i = 0; i < b.getRows(); i++) {
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+19	  for (int i = 0; i < b.getRows(); i++) {
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+19	  for (int i = 0; i < b.getRows(); i++) {
+(gdb) 
+24	  std::cout << "Now, b is:\n" << b << std::endl;
+(gdb) 
+25	  if (a == b) {
+(gdb) 
+29	    std::cout << "a and b have different contents" << std::endl;
+(gdb) 
+32	  IntMatrix c;
+(gdb) 
+33	  std::cout << "c is:\n" << c << std::endl;
+(gdb) 
+34	  c = a + b;
+(gdb) 
+35	  std::cout << "Now, c is:\n" << c << std::endl;
+(gdb) 
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000555555554f40 in IntArray::size (this=0x0) at IntArray.cpp:44
+44	  return numElements;
+(gdb) 
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
+(gdb) 
+The program is not being run.
+(gdb) start
+Temporary breakpoint 2 at 0x5555555558fd: file test.cpp, line 3.
+Starting program: /home/zl186/ece551/073_int_matrix/intMatrixTest 
+
+Temporary breakpoint 2, main () at test.cpp:3
+3	int main(void) {
+(gdb) 
+Temporary breakpoint 3 at 0x5555555558fd: file test.cpp, line 3.
+Starting program: /home/zl186/ece551/073_int_matrix/intMatrixTest 
+[Switching to thread 1 (process 65922)](running)
+
+
+
+
+
+
+
+
+
+
+
+Temporary breakpoint 3, main () at test.cpp:3
+3	int main(void) {
+(gdb) Temporary breakpoint 4 at 0x5555555558fd: file test.cpp, line 3.
+Starting program: /home/zl186/ece551/073_int_matrix/intMatrixTest 
+[Switching to thread 1 (process 65933)](running)
+
+Temporary breakpoint 4, main () at test.cpp:3
+3	int main(void) {
+Temporary breakpoint 5 at 0x5555555558fd: file test.cpp, line 3.
+Starting program: /home/zl186/ece551/073_int_matrix/intMatrixTest 
+[Switching to thread 1 (process 65950)](running)
+
+Temporary breakpoint 5, main () at test.cpp:3
+3	int main(void) {
+Temporary breakpoint 6 at 0x5555555558fd: file test.cpp, line 3.
+Starting program: /home/zl186/ece551/073_int_matrix/intMatrixTest 
+[Switching to thread 1 (process 65961)](running)
+
+Temporary breakpoint 6, main () at test.cpp:3
+3	int main(void) {
+Temporary breakpoint 7 at 0x5555555558fd: file test.cpp, line 3.
+Starting program: /home/zl186/ece551/073_int_matrix/intMatrixTest 
+[Switching to thread 1 (process 65970)](running)
+
+Temporary breakpoint 7, main () at test.cpp:3
+3	int main(void) {
+Temporary breakpoint 8 at 0x5555555558fd: file test.cpp, line 3.
+Starting program: /home/zl186/ece551/073_int_matrix/intMatrixTest 
+[Switching to thread 1 (process 65986)](running)
+
+Temporary breakpoint 8, main () at test.cpp:3
+3	int main(void) {
+Temporary breakpoint 9 at 0x5555555558fd: file test.cpp, line 3.
+Starting program: /home/zl186/ece551/073_int_matrix/intMatrixTest 
+[Switching to thread 1 (process 66025)](running)
+
+Temporary breakpoint 9, main () at test.cpp:3
+3	int main(void) {
+Temporary breakpoint 10 at 0x5555555558fd: file test.cpp, line 3.
+Starting program: /home/zl186/ece551/073_int_matrix/intMatrixTest 
+[Switching to thread 1 (process 66040)](running)
+
+Temporary breakpoint 10, main () at test.cpp:3
+3	int main(void) {
+Temporary breakpoint 11 at 0x5555555558fd: file test.cpp, line 3.
+Starting program: /home/zl186/ece551/073_int_matrix/intMatrixTest 
+[Switching to thread 1 (process 66054)](running)
+
+Temporary breakpoint 11, main () at test.cpp:3
+3	int main(void) {
+Temporary breakpoint 12 at 0x5555555558fd: file test.cpp, line 3.
+Starting program: /home/zl186/ece551/073_int_matrix/intMatrixTest 
+/dev/pts/13: No such file or directory.
+During startup program exited with code 1.
+Temporary breakpoint 13 at 0x5555555558fd: file test.cpp, line 3.
+Starting program: /home/zl186/ece551/073_int_matrix/intMatrixTest 
+
+Temporary breakpoint 12, main () at test.cpp:3
+3	int main(void) {
+n
+4	  IntMatrix a(4,5);
+(gdb) n
+5	  for (int i = 0; i < a.getRows(); i++) {
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+
+6	    for (int j = 0; j < a.getColumns(); j++) {
+
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+
+7	      a[i][j] = i+j;
+(gdb) 6	    for (int j = 0; j < a.getColumns(); j++) {
+
+
+7	      a[i][j] = i+j;
+(gdb) 6	    for (int j = 0; j < a.getColumns(); j++) {
+
+
+5	  for (int i = 0; i < a.getRows(); i++) {
+(gdb) 6	    for (int j = 0; j < a.getColumns(); j++) {
+
+
+7	      a[i][j] = i+j;
+(gdb) 6	    for (int j = 0; j < a.getColumns(); j++) {
+
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+
+
+7	      a[i][j] = i+j;
+(gdb) 6	    for (int j = 0; j < a.getColumns(); j++) {
+7	      a[i][j] = i+j;
+
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+5	  for (int i = 0; i < a.getRows(); i++) {
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+5	  for (int i = 0; i < a.getRows(); i++) {
+(gdb) 6	    for (int j = 0; j < a.getColumns(); j++) {
+
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+
+7	      a[i][j] = i+j;
+(gdb) 6	    for (int j = 0; j < a.getColumns(); j++) {
+
+
+7	      a[i][j] = i+j;
+(gdb) 6	    for (int j = 0; j < a.getColumns(); j++) {
+
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+7	      a[i][j] = i+j;
+(gdb) 
+6	    for (int j = 0; j < a.getColumns(); j++) {
+(gdb) 
+5	  for (int i = 0; i < a.getRows(); i++) {
+(gdb) 
+10	  std::cout << "a is:\n" << a << std::endl;
+(gdb) 
+11	  IntMatrix b(a);
+(gdb) 
+
+
+
+12	  std::cout << "b is:\n" << a << std::endl;
+(gdb) 13	  if (a == b) {
+14	    std::cout << "a and b have the same contents" << std::endl;
+
+(gdb) 19	  for (int i = 0; i < b.getRows(); i++) {
+
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 21	      b[i][j] += i*j;
+
+
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 21	      b[i][j] += i*j;
+
+
+
+
+20	    for (int j = 0; j < b.getColumns(); j++) {
+
+(gdb) 
+
+
+
+21	      b[i][j] += i*j;
+(gdb) 20	    for (int j = 0; j < b.getColumns(); j++) {
+21	      b[i][j] += i*j;
+20	    for (int j = 0; j < b.getColumns(); j++) {
+21	      b[i][j] += i*j;
+20	    for (int j = 0; j < b.getColumns(); j++) {
+19	  for (int i = 0; i < b.getRows(); i++) {
+20	    for (int j = 0; j < b.getColumns(); j++) {
+
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+19	  for (int i = 0; i < b.getRows(); i++) {
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+19	  for (int i = 0; i < b.getRows(); i++) {
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 21	      b[i][j] += i*j;
+
+
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 21	      b[i][j] += i*j;
+
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+21	      b[i][j] += i*j;
+(gdb) 
+20	    for (int j = 0; j < b.getColumns(); j++) {
+(gdb) 
+19	  for (int i = 0; i < b.getRows(); i++) {
+(gdb) 
+24	  std::cout << "Now, b is:\n" << b << std::endl;
+(gdb) 
+25	  if (a == b) {
+(gdb) 
+29	    std::cout << "a and b have different contents" << std::endl;
+(gdb) 
+32	  IntMatrix c;
+(gdb) 
+33	  std::cout << "c is:\n" << c << std::endl;
+(gdb) 
+34	  c = a + b;
+(gdb) 
+35	  std::cout << "Now, c is:\n" << c << std::endl;
+(gdb) s
+operator<< (s=..., rhs=...) at IntMatrix.cpp:81
+81	  bool first = true;
+(gdb) 
+82	  s << "[ ";
+(gdb) 
+83	  for (int i = 0; i < rhs.getRows(); i++) {
+(gdb) 
+IntMatrix::getRows (this=0x7fffffffe3a0) at IntMatrix.cpp:41
+41	  return numRows;
+(gdb) 
+42	}
+(gdb) 
+operator<< (s=..., rhs=...) at IntMatrix.cpp:84
+84	    if (first) {
+(gdb) 
+85	      first = false;
+(gdb) 
+90	    s << rhs[i];
+(gdb) 
+IntMatrix::operator[] (this=0x7fffffffe3a0, index=0) at IntMatrix.cpp:47
+47	  assert(0 <= index && index < numRows);
+(gdb) 
+48	  return *rows[index];
+(gdb) 
+49	}
+(gdb) 
+operator<< (s=..., rhs=...) at IntArray.cpp:66
+66	  s << '{';
+(gdb) 
+67	  for (int i = 0; i < rhs.size(); i++) {
+(gdb) 
+IntArray::size (this=0x0) at IntArray.cpp:44
+44	  return numElements;
+(gdb) 
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000555555554f40 in IntArray::size (this=0x0) at IntArray.cpp:44
+44	  return numElements;
+(gdb) 
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
+(gdb) 
+The program is not being run.
+(gdb) 
+The program is not being run.
+(gdb) 
+The program is not being run.
+(gdb) 
+The program is not being run.
+(gdb) 
+The program is not being run.
+(gdb) 
+The program is not being run.
+(gdb) 
+The program is not being run.
+(gdb) 
+The program is not being run.
+(gdb) 
+The program is not being run.
+(gdb) 
+The program is not being run.
+(gdb) 

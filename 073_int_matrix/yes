@@ -1,0 +1,56 @@
+Current directory is ~/ece551/073_int_matrix/
+GNU gdb (Ubuntu 8.1-0ubuntu3) 8.1.0.20180409-git
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from intMatrixTest...done.
+(gdb) start
+Temporary breakpoint 1 at 0x1919: file test.cpp, line 3.
+Starting program: /home/zl186/ece551/073_int_matrix/intMatrixTest 
+
+Temporary breakpoint 1, main () at test.cpp:3
+3	int main(void) {
+(gdb) break 33
+Breakpoint 2 at 0x555555555bc5: file test.cpp, line 33.
+(gdb) continue
+Continuing.
+
+Breakpoint 2, main () at test.cpp:33
+33	  std::cout << "c is:\n" << c << std::endl;
+(gdb) n
+34	  c = a + b;
+(gdb) n
+35	  std::cout << "Now, c is:\n" << c << std::endl;
+(gdb) p c
+$1 = {numRows = 4, numColumns = 5, rows = 0x55555576a610}
+(gdb) p c[1]
+$2 = (IntArray &) <error reading variable>
+(gdb) s
+operator<< (s=..., rhs=...) at IntMatrix.cpp:78
+78	  s << "[ ";
+(gdb) n
+79	  for (int i = 0; i < rhs.getRows(); i++) {
+(gdb) 
+80	    if (i != rhs.getRows() - 1) {
+(gdb) 
+81	      s << rhs[i] << ",\n";
+(gdb) 
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000555555554f40 in IntArray::size (this=0x0) at IntArray.cpp:44
+44	  return numElements;
+(gdb) 
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
+(gdb)
