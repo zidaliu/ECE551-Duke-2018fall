@@ -7,7 +7,7 @@ IntMatrix::IntMatrix(int r, int c) : numRows(r), numColumns(c) {
   }
 }
 IntMatrix::IntMatrix(const IntMatrix & rhs) : numRows(rhs.numRows), numColumns(rhs.numColumns) {
-  rows = new IntArray *[numRows];
+  rows = new IntArray *[numRows]();
   for (int i = 0; i < numRows; i++) {
     rows[i] = new IntArray(numColumns);
     *rows[i] = *rhs.rows[i];
@@ -36,7 +36,7 @@ IntMatrix & IntMatrix::operator=(const IntMatrix & rhs) {
   }
   return *this;
   /*
-  if (this != &rhs) {
+e  if (this != &rhs) {
     for (int i = 0; i < numRows; i++) {
       delete rows[i];
     }
