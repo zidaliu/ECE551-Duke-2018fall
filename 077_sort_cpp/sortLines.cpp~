@@ -1,0 +1,23 @@
+#include <algorithm>
+#include <cstdlib>
+#include <fstream>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void sortFile(istream & m) {}
+
+int main(int argc, char ** argv) {
+  if (argc < 2) {
+    sortFile(cin);
+  }
+  else {
+    for (int i = 1; i < argc; i++) {
+      fstream f(argv[i]);
+      if (f != 0) {
+        sortFile(f);
+      }
+    }
+  }
+}
