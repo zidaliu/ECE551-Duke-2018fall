@@ -53,7 +53,7 @@ class LinkedList
     destory();
     head = NULL;
     tail = NULL;
-    for (Node * p = rhs->head; p != NULL; p = p->next) {
+    for (Node * p = rhs.head; p != NULL; p = p->next) {
       this->addBack(p->data);
     }
     return *this;
