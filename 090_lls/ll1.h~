@@ -49,7 +49,15 @@ class LinkedList
  public:
   LinkedList() : head(NULL), tail(NULL){};
   LinkedList(const LinkedList & rhs);
-  LinkedList & operator=(const LinkedList & rhs);
+  LinkedList & operator=(const LinkedList & rhs) {
+    destory();
+    head = NULL;
+    tail = NULL;
+    for (Node * p = rhs.head; p != NULL; p = p->next) {
+      this->addBack(p->data);
+    }
+    return *this;
+  }
   ~LinkedList() { destory(); }
   void addFront(const T & item);
   void addBack(const T & item);
@@ -60,17 +68,6 @@ class LinkedList
   int getSize() const;
   friend void testList(void);
 };
-
-template<typename T>
-LinkedList<T> & LinkedList<T>::operator=(const LinkedList & rhs) {
-  destory();
-  head = NULL;
-  tail = NULL;
-  for (Node * p = rhs.head; p != NULL; p = p->next) {
-    this->addBack(p->data);
-  }
-  return *this;
-}
 
 template<typename T>
 int LinkedList<T>::getSize() const {
