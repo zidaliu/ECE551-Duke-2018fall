@@ -1,0 +1,59 @@
+#ifndef _IL_H_
+#define _IL_H_
+
+#include <cstdlib>
+void testList(void);
+class IntList
+{
+ private:
+  class Node
+  {
+   public:
+    int data;
+    Node * next;
+    Node * prev;
+    Node() : data(0), next(NULL), prev(NULL){};
+  };
+  Node * head;
+  Node * tail;
+  int size;
+
+ public:
+  IntList();
+  IntList(const IntList & rhs);
+  IntList & operator=(const IntList & rhs);
+  ~IntList();
+  void addFront(const int & item);
+  void addBack(const int & item);
+  bool remove(const int & item);
+  int & operator[](int index);
+  const int & operator[](int index) const;
+  int find(const int & item);
+  int getSize() const;
+  friend void testList(void);
+};
+
+void testList(void) {
+  IntList a;
+  if (a.getSize() != 0) {
+    exit(EXIT_FAILURE);
+  }
+
+  a.addFront(1);
+  a.addFront(2);
+  a.addFront(3);
+  IntList b(a);
+  //TEST CASE 11
+  if (b.head->data != 3 || b.head->next->data != 2 || b.) {
+    exit(EXIT_FAILURE);
+  }
+  //TEST CASE 1
+  b.remove(1);
+  b.remove(2);
+  b.remove(3);
+  if (b.head != NULL) {
+    exit(EXIT_FAILURE);
+  }
+}
+
+#endif
