@@ -1,34 +1,25 @@
-Grading at 11/02/2018:01:59:30.317936
-For commit ID 9f4615e97e905b5ed6b0ca7cabe4b5728a3b9e2e
+Grading at 11/02/2018:02:06:46.137164
+For commit ID 6159f7b686e1cdac94ff3affa68b68e69c7114f1
 -----------------------------------------------
 testcase 1 : Testing with LinkedList<int>
 ...compiling...
-In file included from tester.cpp:1:0:
-ll.h: In instantiation of ‘LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>&) [with T = int]’:
-tester.cpp:94:11:   required from here
-ll.h:56:21: error: base operand of ‘->’ has non-pointer type ‘const LinkedList<int>’
-     for (Node * p = rhs->head; p != NULL; p = p->next) {
-                     ^~~
-The code did not compile.  This test failed.
+The code compiled.
+  - Valgrind was clean (no errors, no memory leaks)
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 2 : Testing with LinkedList<std::string>
 ...compiling...
-In file included from tester.cpp:1:0:
-ll.h: In instantiation of ‘LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>&) [with T = std::__cxx11::basic_string<char>]’:
-tester.cpp:94:11:   required from here
-ll.h:56:21: error: base operand of ‘->’ has non-pointer type ‘const LinkedList<std::__cxx11::basic_string<char> >’
-     for (Node * p = rhs->head; p != NULL; p = p->next) {
-                     ^~~
-The code did not compile.  This test failed.
+The code compiled.
+  - Valgrind was clean (no errors, no memory leaks)
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 3 : Testing with LinkedList<(a custom class we wrote)>
 ...compiling...
-In file included from tester.cpp:1:0:
-ll.h: In instantiation of ‘LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>&) [with T = Tester]’:
-tester.cpp:94:11:   required from here
-ll.h:56:21: error: base operand of ‘->’ has non-pointer type ‘const LinkedList<Tester>’
-     for (Node * p = rhs->head; p != NULL; p = p->next) {
-                     ^~~
-The code did not compile.  This test failed.
+The code compiled.
+  - Valgrind was clean (no errors, no memory leaks)
+Your file matched the expected output
+Testcase passed 
 
-Overall Grade: F
+Overall Grade: A
