@@ -59,7 +59,7 @@ int main(void) {
   LinearFunction b;
   check(&b, 0, 0, 0, "Wrong implementation of Binary Search\n");
   check(&b, 1, 8, 1, "Wrong implementation of BS when all positive!\n");
-  check(&b, -5, -2, -3, "Wrong implementation of BS when all negative!\n");
+  check(&b, -9, -2, -3, "Wrong implementation of BS when all negative!\n");
   check(&b, -4, 5, -1, "Wrong implementation of BS!\n");
   SinFunction s;
   check(&s, 0, 150000, 52359, "Wrong implementation of BS!\n");
