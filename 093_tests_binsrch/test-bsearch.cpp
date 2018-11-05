@@ -1,0 +1,67 @@
+#include <cstdio>
+#include <cstdlib>
+
+#include "function.h"
+#include "math.h"
+
+int binarySearchForZero(Function<int, int> * f, int low, int high);
+class CountedIntFn : public Function<int, int>
+{
+ protected:
+  unsigned remaining;
+  Function<int, int> * f;
+  const char * mesg;
+
+ public:
+  CountedIntFn(unsigned n, Function<int, int> * fn, const char * m) :
+      remaining(n),
+      f(fn),
+      mesg(m) {}
+  virtual int invoke(int arg) {
+    if (remaining == 0) {
+      fprintf(stderr, "Too many function invocations in %s\n", mesg);
+      exit(EXIT_FAILURE);
+    }
+    remaining--;
+    return f->invoke(arg);
+  }
+};
+void check(Function<int, int> * f, int low, int high, int expected_ans, const char * mesg) {
+  if (high == low) {
+    CountedIntFn * p = new CountedIntFn(1, f, mesg);
+    if (binarySearchForZero(p, low, high) != expected_ans) {
+      fprintf(stderr, "Wrong implementation of BS(do not match the expected return value)\n");
+      exit(EXIT_FAILURE);
+    }
+  }
+  else {
+    CountedIntFn * p = new CountedIntFn(log2(high - low) + 1, f, mesg);
+    if (binarySearchForZero(p, low, high) != expected_ans) {
+      fprintf(stderr, "Wrong implementation of Binary Search(return value)\n");
+      exit(EXIT_FAILURE);
+    }
+  }
+}
+
+class SinFunction : public Function<int, int>
+{
+ public:
+  virtual int invoke(int arg) { return 10000000 * (sin(arg / 100000.0) - 0.5); }
+};
+
+class LinearFunction : public Function<int, int>
+{
+ public:
+  virtual int invoke(int arg) { return arg + 1; }
+};
+
+int main(void) {
+  LinearFunction b;
+  check(&b, 0, 0, 0, "Wrong implementation of Binary Search\n");
+  check(&b, 1, 8, 1, "Wrong implementation of BS when all positive!\n");
+  check(&b, -5, -2, -3, "Wrong implementation of BS when all negative!\n");
+  check(&b, -4, 5, -1, "Wrong implementation of BS!\n");
+  SinFunction s;
+  check(&s, 0, 150000, 52359, "Wrong implementation of BS!\n");
+  return EXIT_SUCCESS;
+}
