@@ -18,6 +18,6 @@ int binarySearchForZero(Function<int, int> * f, int low, int high) {
     else {
       end = mid;
     }
-    return begin;
   }
+  return begin;
 }
