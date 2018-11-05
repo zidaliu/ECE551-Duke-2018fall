@@ -6,8 +6,8 @@ int binarySearchForZero(Function<int, int> * f, int low, int high) {
   }
   int begin = low;
   int end = high;
-  while (begin + 1 != end) {
-    int mid = begin + (begin - end) / 2;
+  while ((begin + 1) != end) {
+    int mid = begin + (end - begin) / 2;
     int ans = f->invoke(mid);
     if (ans == 0) {
       return mid;
