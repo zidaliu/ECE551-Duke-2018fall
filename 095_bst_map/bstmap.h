@@ -5,7 +5,7 @@
 template<typename K, typename V>
 class BstMap : public Map<K, V>
 {
- private:
+ protected:
   class Node
   {
    public:
@@ -18,7 +18,7 @@ class BstMap : public Map<K, V>
 
   Node * root;
   Node ** lookupnode(const K & key) const {
-    Node ** n = &root;
+    Node ** n = const_cast<Node **>(&root);
     while ((*n)->key != key && *n != NULL) {
       if ((*n)->key < key) {
         n = &(*n)->right;
