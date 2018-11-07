@@ -1,0 +1,60 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+
+#include "bstset.h"
+
+int main() {
+  BstSet<int> m;
+  m.add(8);
+  m.add(5);
+  m.add(15);
+  m.add(20);
+  m.add(7);
+  m.add(21);
+  try {
+    m.contains(23);
+  }
+  catch (const std::invalid_argument & e) {
+    std::cout << e.what() << "\n";
+  }
+  m.add(23);
+  try {
+    if (m.contains(23) == false) {
+      throw std::invalid_argument("hh");
+    }
+  }
+  catch (const std::invalid_argument & e) {
+    std::cout << "Not add successful" << e.what() << "\n";
+  }
+  m.remove(23);
+  try {
+    if (m.contains(23) == false) {
+      throw std::invalid_argument("hh");
+    }
+  }
+  catch (const std::invalid_argument & e) {
+    std::cout << "Now remove sucess " << e.what() << "\n";
+  }
+  /*copy construct*/
+  BstSet<int> m_1(m);
+  try {
+    m_1.contains(8);
+  }
+  catch (const std::invalid_argument & e) {
+    std::cout << "Not copy sucessful"
+              << "\n";
+  }
+
+  /*assignment operater*/
+  BstSet<int> m_2 = m;
+  try {
+    m_2.contains(8);
+  }
+  catch (const std::invalid_argument & e) {
+    std::cout << "Not assign sucessful"
+              << "\n";
+  }
+
+  return 0;
+}
