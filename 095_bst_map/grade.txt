@@ -1,0 +1,103 @@
+Grading at 11/07/2018:05:02:41.868905
+For commit ID c62529fac375eee79cc8adaa47b1ba06dcb39927
+-----------------------------------------------
+testcase 1 : Testing with BstMap<int,int>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘BstMap<K, V>::Node** BstMap<K, V>::lookupnode(const K&) const [with K = int; V = int]’:
+bstmap.h:59:30:   required from ‘const V& BstMap<K, V>::lookup(const K&) const [with K = int; V = int]’
+89-tester.cpp:119:26:   required from here
+bstmap.h:21:13: error: invalid conversion from ‘BstMap<int, int>::Node* const*’ to ‘BstMap<int, int>::Node**’ [-fpermissive]
+     Node ** n = &root;
+             ^
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 2 : Testing with BstMap<int,std::string>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘BstMap<K, V>::Node** BstMap<K, V>::lookupnode(const K&) const [with K = int; V = std::__cxx11::basic_string<char>]’:
+bstmap.h:59:30:   required from ‘const V& BstMap<K, V>::lookup(const K&) const [with K = int; V = std::__cxx11::basic_string<char>]’
+89-tester.cpp:119:26:   required from here
+bstmap.h:21:13: error: invalid conversion from ‘BstMap<int, std::__cxx11::basic_string<char> >::Node* const*’ to ‘BstMap<int, std::__cxx11::basic_string<char> >::Node**’ [-fpermissive]
+     Node ** n = &root;
+             ^
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 3 : Testing with BstMap<int,(a custom class we wrote)>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘BstMap<K, V>::Node** BstMap<K, V>::lookupnode(const K&) const [with K = int; V = Tester]’:
+bstmap.h:59:30:   required from ‘const V& BstMap<K, V>::lookup(const K&) const [with K = int; V = Tester]’
+89-tester.cpp:119:26:   required from here
+bstmap.h:21:13: error: invalid conversion from ‘BstMap<int, Tester>::Node* const*’ to ‘BstMap<int, Tester>::Node**’ [-fpermissive]
+     Node ** n = &root;
+             ^
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 4 : Testing with BstMap<std::string,int>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘BstMap<K, V>::Node** BstMap<K, V>::lookupnode(const K&) const [with K = std::__cxx11::basic_string<char>; V = int]’:
+bstmap.h:59:30:   required from ‘const V& BstMap<K, V>::lookup(const K&) const [with K = std::__cxx11::basic_string<char>; V = int]’
+89-tester.cpp:119:26:   required from here
+bstmap.h:21:13: error: invalid conversion from ‘BstMap<std::__cxx11::basic_string<char>, int>::Node* const*’ to ‘BstMap<std::__cxx11::basic_string<char>, int>::Node**’ [-fpermissive]
+     Node ** n = &root;
+             ^
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 5 : Testing with BstMap<std::string,std::string>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘BstMap<K, V>::Node** BstMap<K, V>::lookupnode(const K&) const [with K = std::__cxx11::basic_string<char>; V = std::__cxx11::basic_string<char>]’:
+bstmap.h:59:30:   required from ‘const V& BstMap<K, V>::lookup(const K&) const [with K = std::__cxx11::basic_string<char>; V = std::__cxx11::basic_string<char>]’
+89-tester.cpp:119:26:   required from here
+bstmap.h:21:13: error: invalid conversion from ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >::Node* const*’ to ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >::Node**’ [-fpermissive]
+     Node ** n = &root;
+             ^
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 6 : Testing with BstMap<std::string,(a custom class we wrote)>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘BstMap<K, V>::Node** BstMap<K, V>::lookupnode(const K&) const [with K = std::__cxx11::basic_string<char>; V = Tester]’:
+bstmap.h:59:30:   required from ‘const V& BstMap<K, V>::lookup(const K&) const [with K = std::__cxx11::basic_string<char>; V = Tester]’
+89-tester.cpp:119:26:   required from here
+bstmap.h:21:13: error: invalid conversion from ‘BstMap<std::__cxx11::basic_string<char>, Tester>::Node* const*’ to ‘BstMap<std::__cxx11::basic_string<char>, Tester>::Node**’ [-fpermissive]
+     Node ** n = &root;
+             ^
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 7 : Testing with BstMap<(a custom class we wrote),int>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘BstMap<K, V>::Node** BstMap<K, V>::lookupnode(const K&) const [with K = Tester; V = int]’:
+bstmap.h:59:30:   required from ‘const V& BstMap<K, V>::lookup(const K&) const [with K = Tester; V = int]’
+89-tester.cpp:119:26:   required from here
+bstmap.h:21:13: error: invalid conversion from ‘BstMap<Tester, int>::Node* const*’ to ‘BstMap<Tester, int>::Node**’ [-fpermissive]
+     Node ** n = &root;
+             ^
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 8 : Testing with BstMap<(a custom class we wrote),std::string>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘BstMap<K, V>::Node** BstMap<K, V>::lookupnode(const K&) const [with K = Tester; V = std::__cxx11::basic_string<char>]’:
+bstmap.h:59:30:   required from ‘const V& BstMap<K, V>::lookup(const K&) const [with K = Tester; V = std::__cxx11::basic_string<char>]’
+89-tester.cpp:119:26:   required from here
+bstmap.h:21:13: error: invalid conversion from ‘BstMap<Tester, std::__cxx11::basic_string<char> >::Node* const*’ to ‘BstMap<Tester, std::__cxx11::basic_string<char> >::Node**’ [-fpermissive]
+     Node ** n = &root;
+             ^
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 9 : Testing with BstMap<(a custom class we wrote),(a custom class we wrote)>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘BstMap<K, V>::Node** BstMap<K, V>::lookupnode(const K&) const [with K = Tester; V = Tester]’:
+bstmap.h:59:30:   required from ‘const V& BstMap<K, V>::lookup(const K&) const [with K = Tester; V = Tester]’
+89-tester.cpp:119:26:   required from here
+bstmap.h:21:13: error: invalid conversion from ‘BstMap<Tester, Tester>::Node* const*’ to ‘BstMap<Tester, Tester>::Node**’ [-fpermissive]
+     Node ** n = &root;
+             ^
+The code did not compile.  This test failed.
+
+Overall Grade: F
