@@ -43,8 +43,26 @@ class BstMap : public Map<K, V>
     delete n;
   }
 
+  void copyTree(Node ** n, const Node * m) {
+    if (m != NULL) {
+      *n = new Node(m->key, m->value);
+      copyTree(&(*n)->left, m->left);
+      copyTree(&(*n)->right, m->right);
+    }
+  }
+
  public:
   BstMap() : root(NULL) {}
+  BstMap(const BstMap & m) : root(NULL) { copyTree(&root, m.root); }
+  const BstMap & operator=(const BstMap & m) {
+    if (&m != this) {
+      BstMap temp = m;
+      Node * t = root;
+      root = temp.root;
+      temp.root = t;
+    }
+    return *this;
+  }
 
   virtual void add(const K & key, const V & value) {
     Node ** find = lookupnode(key);
