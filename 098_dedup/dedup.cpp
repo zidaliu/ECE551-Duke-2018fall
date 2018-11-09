@@ -32,7 +32,7 @@ class Hashset
 
    public:
     Linkedlist() : head(NULL), tail(NULL), size(0) {}
-    void addFront(string data_k, string data_v) {
+    void addTail(string data_k, string data_v) {
       tail = new Node(data_k, data_v, tail);
       if (head == NULL) {
         head = tail;
@@ -77,7 +77,7 @@ class Hashset
     // cout << "index" << v % hsiz << " "
     //      << "add path: " << k << endl;
     string h_1 = to_string(v);  //h_1 is key is content
-    hvec[v % hsiz].addFront(h_1, k);
+    hvec[v % hsiz].addTail(h_1, k);
   }
 
  public:
@@ -121,7 +121,7 @@ void load(const char * path, Hashset & set) {
     DIR * dir;
     dir = opendir(path);
     if (NULL == dir) {
-      cout << "Can not open dir " << path << endl;
+      // cout << "Can not open dir " << path << endl;
       return;
     }
     /* read all the files in the dir ~ */
