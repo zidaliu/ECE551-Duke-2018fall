@@ -1,0 +1,2 @@
+target: dedup
+	g++ dedup.cpp -o dedup -std=gnu++11
