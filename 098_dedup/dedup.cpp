@@ -8,111 +8,35 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <unordered_map>
 using namespace std;
-#define HASH_INISIZ 107
 
-class Hashset
-{
- public:
-  class Linkedlist
-  {
-    class Node
-    {
-     public:
-      string key;    //file contents
-      string value;  //file path
-      Node * next;
-      Node * prev;
-
-      Node(string k, string v, Node * next) : key(k), value(v), next(next), prev(NULL) {}
-    };
-    Node * head;
-    Node * tail;
-    size_t size;
-
-   public:
-    Linkedlist() : head(NULL), tail(NULL), size(0) {}
-    void addTail(string data_k, string data_v) {
-      tail = new Node(data_k, data_v, tail);
-      if (head == NULL) {
-        head = tail;
-      }
-      else {
-        tail->prev->next = tail;
-      }
-      size++;
-    }
-    /*compare within a bucket*/
-
-    /*search in a bucket*/
-    string search(string & content) {
-      while (head != NULL) {
-        if (head->key == content) {
-          // cout << "pre :" << head->value << endl;
-          return head->value;
-        }
-        head = head->next;
-      }
-      return "1";
-    }
-    ~Linkedlist() {
-      while (head != NULL) {
-        Node * temp = head->next;
-        delete head;
-        head = temp;
-      }
-    }
-  };
-  Linkedlist * hvec;
-  size_t hsiz;
-  size_t hash(istream & f) {
-    size_t h = 6549;
-    while (!f.eof()) {
-      h = h * 1558 + ((unsigned char)f.get() ^ 233);
-    }
-    return h;
-  }
-
-  void addFile(string k, size_t v) {
-    // cout << "index" << v % hsiz << " "
-    //      << "add path: " << k << endl;
-    string h_1 = to_string(v);  //h_1 is key is content
-    hvec[v % hsiz].addTail(h_1, k);
-  }
-
- public:
-  Hashset() : hvec(new Linkedlist[HASH_INISIZ]()), hsiz(HASH_INISIZ) {}
-  string findDup(const char * path) {
-    ifstream f(path);
-    size_t h = hash(f);
-    string h_1 = to_string(h);
-    string a(path);
-    string b = "1";
-    if (strcmp(hvec[h % hsiz].search(h_1).c_str(), b.c_str()) != 0) {
-      // cout << "index" << h % hsiz << " "
-      //      << "find pre: " << hvec[h % hsiz].search(h_1) << endl;
-      return hvec[h % hsiz].search(h_1);  //find it
-    }
-    addFile(a, h);  // not find then puls
-    return "a";
-  }
-
-  ~Hashset() { delete[] hvec; }
-};
-
-void load(const char * path, Hashset & set) {
+void load(const char * path, unordered_map<string, string> & map) {
   struct stat st;
   string address;
   lstat(path, &st);
 
   if (S_ISREG(st.st_mode)) {
-    // cout << "The file path is " << path << endl;
-    address = set.findDup(path);
-    string a = "a";
-    if (strcmp(address.c_str(), a.c_str()) != 0) {  //find it
-      cout << "#Removing " << path << " (duplicate of " << address << ").\n\nrm " << path << "\n\n";
+    string value(path);
+    ifstream f(path);
+    ostringstream buff;
+    char ch;
+    while (buff && f.get(ch)) {
+      buff.put(ch);
+    }
+    string key = buff.str();
+
+    if (map.find(key) == map.end()) {
+      map.insert(make_pair(key, value));
     }
     else {
+      unordered_map<string, string>::iterator itr;
+      for (itr = map.begin(); itr != map.end(); itr++) {
+        if (itr->first == key) {
+          cout << "#Removing " << path << " (duplicate of " << itr->second << ").\n\nrm " << path
+               << "\n\n";
+        }
+      }
     }
   }
   else if (S_ISDIR(st.st_mode)) {
@@ -121,19 +45,18 @@ void load(const char * path, Hashset & set) {
     DIR * dir;
     dir = opendir(path);
     if (NULL == dir) {
-      // cout << "Can not open dir " << path << endl;
+      cout << "Can not open dir " << path << endl;
       return;
     }
     /* read all the files in the dir ~ */
     while ((filename = readdir(dir)) != NULL) {
       // get rid of "." and ".
-      if (strcmp(filename->d_name, ".") == 0 || strcmp(filename->d_name, "..") == 0 ||
-          filename->d_type == DT_LNK) {
+      if (strcmp(filename->d_name, ".") == 0 || strcmp(filename->d_name, "..") == 0)
         continue;
-      }
       stringstream ss;
       ss << path << '/' << filename->d_name;
-      load(ss.str().c_str(), set);
+      // cout << path << '/' << filename->d_name << endl;
+      load(ss.str().c_str(), map);
     }
     closedir(dir);
   }
@@ -145,9 +68,9 @@ int main(int argc, char * argv[]) {
     return 0;
   }
   cout << "#!/bin/bash\n";
-  Hashset set;
+  unordered_map<string, string> umap;
   for (int i = 1; i < argc; i++) {
-    load(argv[i], set);
+    load(argv[i], umap);
   }
   return EXIT_SUCCESS;
 }
