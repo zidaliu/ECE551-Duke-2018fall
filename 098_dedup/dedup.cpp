@@ -33,7 +33,7 @@ class Hashset
    public:
     Linkedlist() : head(NULL), tail(NULL), size(0) {}
     void addFront(string data_k, string data_v) {
-      tail = new Node(data_k, data_v, head);
+      tail = new Node(data_k, data_v, tail);
       if (head == NULL) {
         head = tail;
       }
