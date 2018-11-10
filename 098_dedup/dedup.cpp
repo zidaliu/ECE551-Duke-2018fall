@@ -50,12 +50,10 @@ void load(const char * path, unordered_map<string, string> & map) {
     }
     /* read all the files in the dir ~ */
     while ((filename = readdir(dir)) != NULL) {
-      // get rid of "." and ".
       if (strcmp(filename->d_name, ".") == 0 || strcmp(filename->d_name, "..") == 0)
         continue;
       stringstream ss;
       ss << path << '/' << filename->d_name;
-      // cout << path << '/' << filename->d_name << endl;
       load(ss.str().c_str(), map);
     }
     closedir(dir);
