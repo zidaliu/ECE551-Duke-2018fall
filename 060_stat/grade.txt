@@ -1,5 +1,5 @@
-Grading at 11/10/2018:21:58:17.760895
-For commit ID 4dbab21f95f5ffd8dc18b3defbefb921e28b2290
+Grading at 11/10/2018:22:13:57.223590
+For commit ID 1f083195421266ad99b616bfe075a497c41b3c99
 Attempting to compile mystat.c
 Your code seems to compile fine.
 
@@ -882,7 +882,7 @@ Your file did not match the expected ouput
   Size: 1113504   	Blocks: 2176       IO Block: 4096   regular file
 Device: fd00h/64768d	Inode: 67157614    Links: 1
 Access: (0755/-rwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
-Access: 2018-11-09 17:04:18.220065742 -0500
+Access: 2018-11-10 17:04:22.508035613 -0500
 Modify: 2018-04-04 14:30:26.000000000 -0400
 Change: 2018-08-18 14:33:17.303763416 -0400
  Birth: -
@@ -899,7 +899,7 @@ Change: 2017-10-22 21:05:31.910011559 -0400
   Size: 1113504   	Blocks: 2176       IO Block: 4096   regular file
 Device: fd00h/64768d	Inode: 67157614    Links: 1
 Access: (0755/-rwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
-Access: 2018-11-09 17:04:18.220065742 -0500
+Access: 2018-11-10 17:04:22.508035613 -0500
 Modify: 2018-04-04 14:30:26.000000000 -0400
 Change: 2018-08-18 14:33:17.303763416 -0400
  Birth: -
