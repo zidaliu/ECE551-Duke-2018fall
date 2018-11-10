@@ -1,0 +1,1612 @@
+Grading at 11/10/2018:21:58:17.760895
+For commit ID 4dbab21f95f5ffd8dc18b3defbefb921e28b2290
+Attempting to compile mystat.c
+Your code seems to compile fine.
+
++-----------------------------------------------------------------------+
+| testcase  1 ./mystat /bin/bash                                        |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase  2 ./mystat /usr/share/dict/words                            |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 6 [ also counts for 4 3 2 1 ]...
+Line_1_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 6, expected
+  File: /usr/share/dict/words -> /etc/dictionaries-common/words
+  Size: 30        	Blocks: 0          IO Block: 4096   symbolic link
+Device: fd00h/64768d	Inode: 33879188    Links: 1
+Access: (0777/lrwxrwxrwx)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-10 12:58:56.183864401 -0500
+Modify: 2017-06-30 08:45:31.895999274 -0400
+Change: 2017-06-30 08:45:31.895999274 -0400
+ Birth: -
+...but you gave: 
+  File: /usr/share/dict/words->> /etc/dictionaries-common/words
+  Size: 30        	Blocks: 0          IO Block: 4096   symbolic link
+Device: fd00h/64768d	Inode: 33879188    Links: 1
+Access: (0777/lrwxrwxrwx)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-10 12:58:56.183864401 -0500
+Modify: 2017-06-30 08:45:31.895999274 -0400
+Change: 2017-06-30 08:45:31.895999274 -0400
+ Birth: -
+ o trying earlier steps...
+**Comparing for Step 4...
+Line_1_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 4
+**Comparing for Step 3...
+Line_1_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 3
+**Comparing for Step 2...
+Line_1_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 2
+**Comparing for Step 1...
+Line_1_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 1
+
++-----------------------------------------------------------------------+
+| testcase  3 ./mystat /var/data/afile                                  |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase  4 ./mystat /var/data/bfile                                  |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase  5 ./mystat /var/data/dir                                    |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase  6 ./mystat /var/data/fifo                                   |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase  7 ./mystat /var/data/file014                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase  8 ./mystat /var/data/file016                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase  9 ./mystat /var/data/file034                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase 10 ./mystat /var/data/file036                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase 11 ./mystat /var/data/file074                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 4, expected
+  File: /var/data/file074
+  Size: 2854      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514396    Links: 1
+Access: (0074/----rwxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.913977641 -0500
+Modify: 2017-10-22 21:05:31.878010635 -0400
+Change: 2017-10-22 21:05:31.878010635 -0400
+ Birth: -
+...but you gave: 
+  File: /var/data/file074
+  Size: 2854      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514396    Links: 1
+Access: (0074/-----wxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.913977641 -0500
+Modify: 2017-10-22 21:05:31.878010635 -0400
+Change: 2017-10-22 21:05:31.878010635 -0400
+ Birth: -
+ o trying earlier steps...
+**Comparing for Step 3...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 3
+**Comparing for Step 2...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 2
+**Comparing for Step 1...
+Your file matched the expected output
+ o Correct for Step 1 
+
++-----------------------------------------------------------------------+
+| testcase 12 ./mystat /var/data/file076                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 4, expected
+  File: /var/data/file076
+  Size: 2934      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514397    Links: 1
+Access: (0076/----rwxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.913977641 -0500
+Modify: 2017-10-22 21:05:31.878010635 -0400
+Change: 2017-10-22 21:05:31.878010635 -0400
+ Birth: -
+...but you gave: 
+  File: /var/data/file076
+  Size: 2934      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514397    Links: 1
+Access: (0076/-----wxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.913977641 -0500
+Modify: 2017-10-22 21:05:31.878010635 -0400
+Change: 2017-10-22 21:05:31.878010635 -0400
+ Birth: -
+ o trying earlier steps...
+**Comparing for Step 3...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 3
+**Comparing for Step 2...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 2
+**Comparing for Step 1...
+Your file matched the expected output
+ o Correct for Step 1 
+
++-----------------------------------------------------------------------+
+| testcase 13 ./mystat /var/data/file214                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase 14 ./mystat /var/data/file216                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase 15 ./mystat /var/data/file234                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase 16 ./mystat /var/data/file236                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase 17 ./mystat /var/data/file274                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 4, expected
+  File: /var/data/file274
+  Size: 2850      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514403    Links: 1
+Access: (0274/--w-rwxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.890010982 -0400
+Change: 2017-10-22 21:05:31.890010982 -0400
+ Birth: -
+...but you gave: 
+  File: /var/data/file274
+  Size: 2850      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514403    Links: 1
+Access: (0274/--w--wxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.890010982 -0400
+Change: 2017-10-22 21:05:31.890010982 -0400
+ Birth: -
+ o trying earlier steps...
+**Comparing for Step 3...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 3
+**Comparing for Step 2...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 2
+**Comparing for Step 1...
+Your file matched the expected output
+ o Correct for Step 1 
+
++-----------------------------------------------------------------------+
+| testcase 18 ./mystat /var/data/file276                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 4, expected
+  File: /var/data/file276
+  Size: 2930      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514404    Links: 1
+Access: (0276/--w-rwxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.894011097 -0400
+Change: 2017-10-22 21:05:31.894011097 -0400
+ Birth: -
+...but you gave: 
+  File: /var/data/file276
+  Size: 2930      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514404    Links: 1
+Access: (0276/--w--wxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.894011097 -0400
+Change: 2017-10-22 21:05:31.894011097 -0400
+ Birth: -
+ o trying earlier steps...
+**Comparing for Step 3...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 3
+**Comparing for Step 2...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 2
+**Comparing for Step 1...
+Your file matched the expected output
+ o Correct for Step 1 
+
++-----------------------------------------------------------------------+
+| testcase 19 ./mystat /var/data/file414                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 4, expected
+  File: /var/data/file414
+  Size: 446       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514405    Links: 1
+Access: (0414/-r----xr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.894011097 -0400
+Change: 2017-10-22 21:05:31.894011097 -0400
+ Birth: -
+...but you gave: 
+  File: /var/data/file414
+  Size: 446       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514405    Links: 1
+Access: (0414/-r--r-xr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.894011097 -0400
+Change: 2017-10-22 21:05:31.894011097 -0400
+ Birth: -
+ o trying earlier steps...
+**Comparing for Step 3...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 3
+**Comparing for Step 2...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 2
+**Comparing for Step 1...
+Your file matched the expected output
+ o Correct for Step 1 
+
++-----------------------------------------------------------------------+
+| testcase 20 ./mystat /var/data/file416                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 4, expected
+  File: /var/data/file416
+  Size: 526       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514406    Links: 1
+Access: (0416/-r----xrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.898011213 -0400
+Change: 2017-10-22 21:05:31.898011213 -0400
+ Birth: -
+...but you gave: 
+  File: /var/data/file416
+  Size: 526       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514406    Links: 1
+Access: (0416/-r--r-xrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.898011213 -0400
+Change: 2017-10-22 21:05:31.898011213 -0400
+ Birth: -
+ o trying earlier steps...
+**Comparing for Step 3...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 3
+**Comparing for Step 2...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 2
+**Comparing for Step 1...
+Your file matched the expected output
+ o Correct for Step 1 
+
++-----------------------------------------------------------------------+
+| testcase 21 ./mystat /var/data/file434                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 4, expected
+  File: /var/data/file434
+  Size: 1246      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514407    Links: 1
+Access: (0434/-r---wxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.898011213 -0400
+Change: 2017-10-22 21:05:31.898011213 -0400
+ Birth: -
+...but you gave: 
+  File: /var/data/file434
+  Size: 1246      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514407    Links: 1
+Access: (0434/-r--rwxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.898011213 -0400
+Change: 2017-10-22 21:05:31.898011213 -0400
+ Birth: -
+ o trying earlier steps...
+**Comparing for Step 3...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 3
+**Comparing for Step 2...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 2
+**Comparing for Step 1...
+Your file matched the expected output
+ o Correct for Step 1 
+
++-----------------------------------------------------------------------+
+| testcase 22 ./mystat /var/data/file436                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 4, expected
+  File: /var/data/file436
+  Size: 1326      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514408    Links: 1
+Access: (0436/-r---wxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.898011213 -0400
+Change: 2017-10-22 21:05:31.902011328 -0400
+ Birth: -
+...but you gave: 
+  File: /var/data/file436
+  Size: 1326      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514408    Links: 1
+Access: (0436/-r--rwxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.898011213 -0400
+Change: 2017-10-22 21:05:31.902011328 -0400
+ Birth: -
+ o trying earlier steps...
+**Comparing for Step 3...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 3
+**Comparing for Step 2...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 2
+**Comparing for Step 1...
+Your file matched the expected output
+ o Correct for Step 1 
+
++-----------------------------------------------------------------------+
+| testcase 23 ./mystat /var/data/file474                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase 24 ./mystat /var/data/file476                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase 25 ./mystat /var/data/file514                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 4, expected
+  File: /var/data/file514
+  Size: 444       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514411    Links: 1
+Access: (0514/-r-x--xr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.906011444 -0400
+Change: 2017-10-22 21:05:31.906011444 -0400
+ Birth: -
+...but you gave: 
+  File: /var/data/file514
+  Size: 444       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514411    Links: 1
+Access: (0514/-r-xr-xr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.906011444 -0400
+Change: 2017-10-22 21:05:31.906011444 -0400
+ Birth: -
+ o trying earlier steps...
+**Comparing for Step 3...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 3
+**Comparing for Step 2...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 2
+**Comparing for Step 1...
+Your file matched the expected output
+ o Correct for Step 1 
+
++-----------------------------------------------------------------------+
+| testcase 26 ./mystat /var/data/file516                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 4, expected
+  File: /var/data/file516
+  Size: 524       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514412    Links: 1
+Access: (0516/-r-x--xrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.906011444 -0400
+Change: 2017-10-22 21:05:31.910011559 -0400
+ Birth: -
+...but you gave: 
+  File: /var/data/file516
+  Size: 524       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514412    Links: 1
+Access: (0516/-r-xr-xrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.906011444 -0400
+Change: 2017-10-22 21:05:31.910011559 -0400
+ Birth: -
+ o trying earlier steps...
+**Comparing for Step 3...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 3
+**Comparing for Step 2...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 2
+**Comparing for Step 1...
+Your file matched the expected output
+ o Correct for Step 1 
+
++-----------------------------------------------------------------------+
+| testcase 27 ./mystat /var/data/file534                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 4, expected
+  File: /var/data/file534
+  Size: 1244      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514413    Links: 1
+Access: (0534/-r-x-wxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.910011559 -0400
+Change: 2017-10-22 21:05:31.910011559 -0400
+ Birth: -
+...but you gave: 
+  File: /var/data/file534
+  Size: 1244      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514413    Links: 1
+Access: (0534/-r-xrwxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.910011559 -0400
+Change: 2017-10-22 21:05:31.910011559 -0400
+ Birth: -
+ o trying earlier steps...
+**Comparing for Step 3...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 3
+**Comparing for Step 2...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 2
+**Comparing for Step 1...
+Your file matched the expected output
+ o Correct for Step 1 
+
++-----------------------------------------------------------------------+
+| testcase 28 ./mystat /var/data/file536                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 4, expected
+  File: /var/data/file536
+  Size: 1324      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514414    Links: 1
+Access: (0536/-r-x-wxrw-)  Uid: ( 1004/    gml8)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.910011559 -0400
+Change: 2017-10-22 21:05:31.910011559 -0400
+ Birth: -
+...but you gave: 
+  File: /var/data/file536
+  Size: 1324      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514414    Links: 1
+Access: (0536/-r-xrwxrw-)  Uid: ( 1004/    gml8)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.910011559 -0400
+Change: 2017-10-22 21:05:31.910011559 -0400
+ Birth: -
+ o trying earlier steps...
+**Comparing for Step 3...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 3
+**Comparing for Step 2...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 2
+**Comparing for Step 1...
+Your file matched the expected output
+ o Correct for Step 1 
+
++-----------------------------------------------------------------------+
+| testcase 29 ./mystat /var/data/file574                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase 30 ./mystat /var/data/file576                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase 31 ./mystat /var/data/file614                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 4, expected
+  File: /var/data/file614
+  Size: 442       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514417    Links: 1
+Access: (0614/-rw---xr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.918011790 -0400
+Change: 2017-10-22 21:05:31.918011790 -0400
+ Birth: -
+...but you gave: 
+  File: /var/data/file614
+  Size: 442       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514417    Links: 1
+Access: (0614/-rw-r-xr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.918011790 -0400
+Change: 2017-10-22 21:05:31.918011790 -0400
+ Birth: -
+ o trying earlier steps...
+**Comparing for Step 3...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 3
+**Comparing for Step 2...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 2
+**Comparing for Step 1...
+Your file matched the expected output
+ o Correct for Step 1 
+
++-----------------------------------------------------------------------+
+| testcase 32 ./mystat /var/data/file616                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 4, expected
+  File: /var/data/file616
+  Size: 522       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514418    Links: 1
+Access: (0616/-rw---xrw-)  Uid: ( 1001/ece551db)   Gid: ( 1004/    drew)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.918011790 -0400
+Change: 2017-10-22 21:05:31.918011790 -0400
+ Birth: -
+...but you gave: 
+  File: /var/data/file616
+  Size: 522       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514418    Links: 1
+Access: (0616/-rw-r-xrw-)  Uid: ( 1001/ece551db)   Gid: ( 1004/    drew)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.918011790 -0400
+Change: 2017-10-22 21:05:31.918011790 -0400
+ Birth: -
+ o trying earlier steps...
+**Comparing for Step 3...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 3
+**Comparing for Step 2...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 2
+**Comparing for Step 1...
+Your file matched the expected output
+ o Correct for Step 1 
+
++-----------------------------------------------------------------------+
+| testcase 33 ./mystat /var/data/file634                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 4, expected
+  File: /var/data/file634
+  Size: 1242      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514419    Links: 1
+Access: (0634/-rw--wxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.922011905 -0400
+Change: 2017-10-22 21:05:31.922011905 -0400
+ Birth: -
+...but you gave: 
+  File: /var/data/file634
+  Size: 1242      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514419    Links: 1
+Access: (0634/-rw-rwxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.922011905 -0400
+Change: 2017-10-22 21:05:31.922011905 -0400
+ Birth: -
+ o trying earlier steps...
+**Comparing for Step 3...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 3
+**Comparing for Step 2...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 2
+**Comparing for Step 1...
+Your file matched the expected output
+ o Correct for Step 1 
+
++-----------------------------------------------------------------------+
+| testcase 34 ./mystat /var/data/file636                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 4, expected
+  File: /var/data/file636
+  Size: 1322      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514421    Links: 1
+Access: (0636/-rw--wxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.922011905 -0400
+Change: 2017-10-22 21:05:31.922011905 -0400
+ Birth: -
+...but you gave: 
+  File: /var/data/file636
+  Size: 1322      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514421    Links: 1
+Access: (0636/-rw-rwxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.922011905 -0400
+Change: 2017-10-22 21:05:31.922011905 -0400
+ Birth: -
+ o trying earlier steps...
+**Comparing for Step 3...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 3
+**Comparing for Step 2...
+Line_4_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 2
+**Comparing for Step 1...
+Your file matched the expected output
+ o Correct for Step 1 
+
++-----------------------------------------------------------------------+
+| testcase 35 ./mystat /var/data/file674                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase 36 ./mystat /var/data/file676                                |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase 37 ./mystat /var/data/socket                                 |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+
++-----------------------------------------------------------------------+
+| testcase 38 ./mystat /dev/null                                        |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 7 [ also counts for 4 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 7 
+
++-----------------------------------------------------------------------+
+| testcase 39 ./mystat /dev/loop4                                       |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 7 [ also counts for 4 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 7 
+
++-----------------------------------------------------------------------+
+| testcase 40 ./mystat /bin/bash /var/data/file536                      |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 5...
+Line_12_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 5, expected
+  File: /bin/bash
+  Size: 1113504   	Blocks: 2176       IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 67157614    Links: 1
+Access: (0755/-rwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-09 17:04:18.220065742 -0500
+Modify: 2018-04-04 14:30:26.000000000 -0400
+Change: 2018-08-18 14:33:17.303763416 -0400
+ Birth: -
+  File: /var/data/file536
+  Size: 1324      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514414    Links: 1
+Access: (0536/-r-x-wxrw-)  Uid: ( 1004/    gml8)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.910011559 -0400
+Change: 2017-10-22 21:05:31.910011559 -0400
+ Birth: -
+...but you gave: 
+  File: /bin/bash
+  Size: 1113504   	Blocks: 2176       IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 67157614    Links: 1
+Access: (0755/-rwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-09 17:04:18.220065742 -0500
+Modify: 2018-04-04 14:30:26.000000000 -0400
+Change: 2018-08-18 14:33:17.303763416 -0400
+ Birth: -
+  File: /var/data/file536
+  Size: 1324      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514414    Links: 1
+Access: (0536/-r-xrwxrw-)  Uid: ( 1004/    gml8)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.910011559 -0400
+Change: 2017-10-22 21:05:31.910011559 -0400
+ Birth: -
+
++-----------------------------------------------------------------------+
+| testcase 41 ./mystat /var/data/*                                      |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 5...
+Line_68_did_not_match
+Line_76_did_not_match
+Line_116_did_not_match
+Line_124_did_not_match
+Line_132_did_not_match
+Line_140_did_not_match
+Line_148_did_not_match
+Line_156_did_not_match
+Line_180_did_not_match
+Line_188_did_not_match
+Line_196_did_not_match
+Line_204_did_not_match
+Line_228_did_not_match
+Line_236_did_not_match
+Line_244_did_not_match
+Line_252_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 5, expected
+  File: /var/data/afile
+  Size: 6         	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514380    Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.893977623 -0500
+Modify: 2017-10-22 21:10:22.826409765 -0400
+Change: 2017-10-22 21:10:22.826409765 -0400
+ Birth: -
+  File: /var/data/bfile
+  Size: 430080    	Blocks: 840        IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514381    Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.897977626 -0500
+Modify: 2017-10-22 21:11:03.259576782 -0400
+Change: 2017-10-22 21:11:03.259576782 -0400
+ Birth: -
+  File: /var/data/dir
+  Size: 6         	Blocks: 0          IO Block: 4096   directory
+Device: fd00h/64768d	Inode: 42537901    Links: 2
+Access: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-10 12:00:23.757316037 -0500
+Modify: 2017-10-22 21:13:51.512432646 -0400
+Change: 2017-10-22 21:13:51.512432646 -0400
+ Birth: -
+  File: /var/data/fifo
+  Size: 0         	Blocks: 0          IO Block: 4096   fifo
+Device: fd00h/64768d	Inode: 76514379    Links: 1
+Access: (0644/prw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2017-10-22 21:01:00.786181105 -0400
+Modify: 2017-10-22 21:01:00.786181105 -0400
+Change: 2017-10-22 21:01:00.786181105 -0400
+ Birth: -
+  File: /var/data/file014
+  Size: 454       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514391    Links: 1
+Access: (0014/------xr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.909977637 -0500
+Modify: 2017-10-22 21:05:31.870010404 -0400
+Change: 2017-10-22 21:05:31.870010404 -0400
+ Birth: -
+  File: /var/data/file016
+  Size: 534       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514392    Links: 1
+Access: (0016/------xrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.909977637 -0500
+Modify: 2017-10-22 21:05:31.870010404 -0400
+Change: 2017-10-22 21:05:31.874010520 -0400
+ Birth: -
+  File: /var/data/file034
+  Size: 1254      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514393    Links: 1
+Access: (0034/-----wxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.913977641 -0500
+Modify: 2017-10-22 21:05:31.874010520 -0400
+Change: 2017-10-22 21:05:31.874010520 -0400
+ Birth: -
+  File: /var/data/file036
+  Size: 1334      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514394    Links: 1
+Access: (0036/-----wxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.913977641 -0500
+Modify: 2017-10-22 21:05:31.874010520 -0400
+Change: 2017-10-22 21:05:31.874010520 -0400
+ Birth: -
+  File: /var/data/file074
+  Size: 2854      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514396    Links: 1
+Access: (0074/----rwxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.913977641 -0500
+Modify: 2017-10-22 21:05:31.878010635 -0400
+Change: 2017-10-22 21:05:31.878010635 -0400
+ Birth: -
+  File: /var/data/file076
+  Size: 2934      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514397    Links: 1
+Access: (0076/----rwxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.913977641 -0500
+Modify: 2017-10-22 21:05:31.878010635 -0400
+Change: 2017-10-22 21:05:31.878010635 -0400
+ Birth: -
+  File: /var/data/file214
+  Size: 450       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514398    Links: 1
+Access: (0214/--w---xr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.913977641 -0500
+Modify: 2017-10-22 21:05:31.882010751 -0400
+Change: 2017-10-22 21:05:31.882010751 -0400
+ Birth: -
+  File: /var/data/file216
+  Size: 530       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514399    Links: 1
+Access: (0216/--w---xrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.886010866 -0400
+Change: 2017-10-22 21:05:31.886010866 -0400
+ Birth: -
+  File: /var/data/file234
+  Size: 1250      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514400    Links: 1
+Access: (0234/--w--wxr--)  Uid: ( 1002/    drew)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.886010866 -0400
+Change: 2017-10-22 21:05:31.886010866 -0400
+ Birth: -
+  File: /var/data/file236
+  Size: 1330      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514401    Links: 1
+Access: (0236/--w--wxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.890010982 -0400
+Change: 2017-10-22 21:05:31.890010982 -0400
+ Birth: -
+  File: /var/data/file274
+  Size: 2850      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514403    Links: 1
+Access: (0274/--w-rwxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.890010982 -0400
+Change: 2017-10-22 21:05:31.890010982 -0400
+ Birth: -
+  File: /var/data/file276
+  Size: 2930      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514404    Links: 1
+Access: (0276/--w-rwxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.894011097 -0400
+Change: 2017-10-22 21:05:31.894011097 -0400
+ Birth: -
+  File: /var/data/file414
+  Size: 446       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514405    Links: 1
+Access: (0414/-r----xr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.894011097 -0400
+Change: 2017-10-22 21:05:31.894011097 -0400
+ Birth: -
+  File: /var/data/file416
+  Size: 526       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514406    Links: 1
+Access: (0416/-r----xrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.898011213 -0400
+Change: 2017-10-22 21:05:31.898011213 -0400
+ Birth: -
+  File: /var/data/file434
+  Size: 1246      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514407    Links: 1
+Access: (0434/-r---wxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.898011213 -0400
+Change: 2017-10-22 21:05:31.898011213 -0400
+ Birth: -
+  File: /var/data/file436
+  Size: 1326      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514408    Links: 1
+Access: (0436/-r---wxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.898011213 -0400
+Change: 2017-10-22 21:05:31.902011328 -0400
+ Birth: -
+  File: /var/data/file474
+  Size: 2846      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514409    Links: 1
+Access: (0474/-r--rwxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.902011328 -0400
+Change: 2017-10-22 21:05:31.902011328 -0400
+ Birth: -
+  File: /var/data/file476
+  Size: 2926      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514410    Links: 1
+Access: (0476/-r--rwxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.902011328 -0400
+Change: 2017-10-22 21:05:31.906011444 -0400
+ Birth: -
+  File: /var/data/file514
+  Size: 444       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514411    Links: 1
+Access: (0514/-r-x--xr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.906011444 -0400
+Change: 2017-10-22 21:05:31.906011444 -0400
+ Birth: -
+  File: /var/data/file516
+  Size: 524       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514412    Links: 1
+Access: (0516/-r-x--xrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.906011444 -0400
+Change: 2017-10-22 21:05:31.910011559 -0400
+ Birth: -
+  File: /var/data/file534
+  Size: 1244      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514413    Links: 1
+Access: (0534/-r-x-wxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.910011559 -0400
+Change: 2017-10-22 21:05:31.910011559 -0400
+ Birth: -
+  File: /var/data/file536
+  Size: 1324      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514414    Links: 1
+Access: (0536/-r-x-wxrw-)  Uid: ( 1004/    gml8)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.910011559 -0400
+Change: 2017-10-22 21:05:31.910011559 -0400
+ Birth: -
+  File: /var/data/file574
+  Size: 2844      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514415    Links: 1
+Access: (0574/-r-xrwxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.914011675 -0400
+Change: 2017-10-22 21:05:31.914011675 -0400
+ Birth: -
+  File: /var/data/file576
+  Size: 2924      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514416    Links: 1
+Access: (0576/-r-xrwxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.914011675 -0400
+Change: 2017-10-22 21:05:31.914011675 -0400
+ Birth: -
+  File: /var/data/file614
+  Size: 442       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514417    Links: 1
+Access: (0614/-rw---xr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.918011790 -0400
+Change: 2017-10-22 21:05:31.918011790 -0400
+ Birth: -
+  File: /var/data/file616
+  Size: 522       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514418    Links: 1
+Access: (0616/-rw---xrw-)  Uid: ( 1001/ece551db)   Gid: ( 1004/    drew)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.918011790 -0400
+Change: 2017-10-22 21:05:31.918011790 -0400
+ Birth: -
+  File: /var/data/file634
+  Size: 1242      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514419    Links: 1
+Access: (0634/-rw--wxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.922011905 -0400
+Change: 2017-10-22 21:05:31.922011905 -0400
+ Birth: -
+  File: /var/data/file636
+  Size: 1322      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514421    Links: 1
+Access: (0636/-rw--wxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.922011905 -0400
+Change: 2017-10-22 21:05:31.922011905 -0400
+ Birth: -
+  File: /var/data/file674
+  Size: 2842      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514422    Links: 1
+Access: (0674/-rw-rwxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.926012021 -0400
+Change: 2017-10-22 21:05:31.926012021 -0400
+ Birth: -
+  File: /var/data/file676
+  Size: 2922      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514423    Links: 1
+Access: (0676/-rw-rwxrw-)  Uid: (    0/    root)   Gid: ( 1005/    gml8)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.926012021 -0400
+Change: 2017-10-22 21:05:31.926012021 -0400
+ Birth: -
+  File: /var/data/socket
+  Size: 0         	Blocks: 0          IO Block: 4096   socket
+Device: fd00h/64768d	Inode: 76514425    Links: 1
+Access: (0775/srwxrwxr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2017-10-20 08:53:00.748799901 -0400
+Modify: 2017-10-20 08:53:00.748799901 -0400
+Change: 2017-10-22 21:08:46.471628509 -0400
+ Birth: -
+...but you gave: 
+  File: /var/data/afile
+  Size: 6         	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514380    Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.893977623 -0500
+Modify: 2017-10-22 21:10:22.826409765 -0400
+Change: 2017-10-22 21:10:22.826409765 -0400
+ Birth: -
+  File: /var/data/bfile
+  Size: 430080    	Blocks: 840        IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514381    Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.897977626 -0500
+Modify: 2017-10-22 21:11:03.259576782 -0400
+Change: 2017-10-22 21:11:03.259576782 -0400
+ Birth: -
+  File: /var/data/dir
+  Size: 6         	Blocks: 0          IO Block: 4096   directory
+Device: fd00h/64768d	Inode: 42537901    Links: 2
+Access: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-10 12:00:23.757316037 -0500
+Modify: 2017-10-22 21:13:51.512432646 -0400
+Change: 2017-10-22 21:13:51.512432646 -0400
+ Birth: -
+  File: /var/data/fifo
+  Size: 0         	Blocks: 0          IO Block: 4096   fifo
+Device: fd00h/64768d	Inode: 76514379    Links: 1
+Access: (0644/prw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2017-10-22 21:01:00.786181105 -0400
+Modify: 2017-10-22 21:01:00.786181105 -0400
+Change: 2017-10-22 21:01:00.786181105 -0400
+ Birth: -
+  File: /var/data/file014
+  Size: 454       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514391    Links: 1
+Access: (0014/------xr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.909977637 -0500
+Modify: 2017-10-22 21:05:31.870010404 -0400
+Change: 2017-10-22 21:05:31.870010404 -0400
+ Birth: -
+  File: /var/data/file016
+  Size: 534       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514392    Links: 1
+Access: (0016/------xrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.909977637 -0500
+Modify: 2017-10-22 21:05:31.870010404 -0400
+Change: 2017-10-22 21:05:31.874010520 -0400
+ Birth: -
+  File: /var/data/file034
+  Size: 1254      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514393    Links: 1
+Access: (0034/-----wxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.913977641 -0500
+Modify: 2017-10-22 21:05:31.874010520 -0400
+Change: 2017-10-22 21:05:31.874010520 -0400
+ Birth: -
+  File: /var/data/file036
+  Size: 1334      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514394    Links: 1
+Access: (0036/-----wxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.913977641 -0500
+Modify: 2017-10-22 21:05:31.874010520 -0400
+Change: 2017-10-22 21:05:31.874010520 -0400
+ Birth: -
+  File: /var/data/file074
+  Size: 2854      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514396    Links: 1
+Access: (0074/-----wxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.913977641 -0500
+Modify: 2017-10-22 21:05:31.878010635 -0400
+Change: 2017-10-22 21:05:31.878010635 -0400
+ Birth: -
+  File: /var/data/file076
+  Size: 2934      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514397    Links: 1
+Access: (0076/-----wxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.913977641 -0500
+Modify: 2017-10-22 21:05:31.878010635 -0400
+Change: 2017-10-22 21:05:31.878010635 -0400
+ Birth: -
+  File: /var/data/file214
+  Size: 450       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514398    Links: 1
+Access: (0214/--w---xr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.913977641 -0500
+Modify: 2017-10-22 21:05:31.882010751 -0400
+Change: 2017-10-22 21:05:31.882010751 -0400
+ Birth: -
+  File: /var/data/file216
+  Size: 530       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514399    Links: 1
+Access: (0216/--w---xrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.886010866 -0400
+Change: 2017-10-22 21:05:31.886010866 -0400
+ Birth: -
+  File: /var/data/file234
+  Size: 1250      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514400    Links: 1
+Access: (0234/--w--wxr--)  Uid: ( 1002/    drew)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.886010866 -0400
+Change: 2017-10-22 21:05:31.886010866 -0400
+ Birth: -
+  File: /var/data/file236
+  Size: 1330      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514401    Links: 1
+Access: (0236/--w--wxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.890010982 -0400
+Change: 2017-10-22 21:05:31.890010982 -0400
+ Birth: -
+  File: /var/data/file274
+  Size: 2850      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514403    Links: 1
+Access: (0274/--w--wxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.890010982 -0400
+Change: 2017-10-22 21:05:31.890010982 -0400
+ Birth: -
+  File: /var/data/file276
+  Size: 2930      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514404    Links: 1
+Access: (0276/--w--wxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.894011097 -0400
+Change: 2017-10-22 21:05:31.894011097 -0400
+ Birth: -
+  File: /var/data/file414
+  Size: 446       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514405    Links: 1
+Access: (0414/-r--r-xr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.894011097 -0400
+Change: 2017-10-22 21:05:31.894011097 -0400
+ Birth: -
+  File: /var/data/file416
+  Size: 526       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514406    Links: 1
+Access: (0416/-r--r-xrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.898011213 -0400
+Change: 2017-10-22 21:05:31.898011213 -0400
+ Birth: -
+  File: /var/data/file434
+  Size: 1246      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514407    Links: 1
+Access: (0434/-r--rwxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.898011213 -0400
+Change: 2017-10-22 21:05:31.898011213 -0400
+ Birth: -
+  File: /var/data/file436
+  Size: 1326      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514408    Links: 1
+Access: (0436/-r--rwxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.917977644 -0500
+Modify: 2017-10-22 21:05:31.898011213 -0400
+Change: 2017-10-22 21:05:31.902011328 -0400
+ Birth: -
+  File: /var/data/file474
+  Size: 2846      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514409    Links: 1
+Access: (0474/-r--rwxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.902011328 -0400
+Change: 2017-10-22 21:05:31.902011328 -0400
+ Birth: -
+  File: /var/data/file476
+  Size: 2926      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514410    Links: 1
+Access: (0476/-r--rwxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.902011328 -0400
+Change: 2017-10-22 21:05:31.906011444 -0400
+ Birth: -
+  File: /var/data/file514
+  Size: 444       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514411    Links: 1
+Access: (0514/-r-xr-xr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.906011444 -0400
+Change: 2017-10-22 21:05:31.906011444 -0400
+ Birth: -
+  File: /var/data/file516
+  Size: 524       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514412    Links: 1
+Access: (0516/-r-xr-xrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.906011444 -0400
+Change: 2017-10-22 21:05:31.910011559 -0400
+ Birth: -
+  File: /var/data/file534
+  Size: 1244      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514413    Links: 1
+Access: (0534/-r-xrwxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.910011559 -0400
+Change: 2017-10-22 21:05:31.910011559 -0400
+ Birth: -
+  File: /var/data/file536
+  Size: 1324      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514414    Links: 1
+Access: (0536/-r-xrwxrw-)  Uid: ( 1004/    gml8)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.910011559 -0400
+Change: 2017-10-22 21:05:31.910011559 -0400
+ Birth: -
+  File: /var/data/file574
+  Size: 2844      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514415    Links: 1
+Access: (0574/-r-xrwxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.914011675 -0400
+Change: 2017-10-22 21:05:31.914011675 -0400
+ Birth: -
+  File: /var/data/file576
+  Size: 2924      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514416    Links: 1
+Access: (0576/-r-xrwxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.921977648 -0500
+Modify: 2017-10-22 21:05:31.914011675 -0400
+Change: 2017-10-22 21:05:31.914011675 -0400
+ Birth: -
+  File: /var/data/file614
+  Size: 442       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514417    Links: 1
+Access: (0614/-rw-r-xr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.918011790 -0400
+Change: 2017-10-22 21:05:31.918011790 -0400
+ Birth: -
+  File: /var/data/file616
+  Size: 522       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514418    Links: 1
+Access: (0616/-rw-r-xrw-)  Uid: ( 1001/ece551db)   Gid: ( 1004/    drew)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.918011790 -0400
+Change: 2017-10-22 21:05:31.918011790 -0400
+ Birth: -
+  File: /var/data/file634
+  Size: 1242      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514419    Links: 1
+Access: (0634/-rw-rwxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.922011905 -0400
+Change: 2017-10-22 21:05:31.922011905 -0400
+ Birth: -
+  File: /var/data/file636
+  Size: 1322      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514421    Links: 1
+Access: (0636/-rw-rwxrw-)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.922011905 -0400
+Change: 2017-10-22 21:05:31.922011905 -0400
+ Birth: -
+  File: /var/data/file674
+  Size: 2842      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514422    Links: 1
+Access: (0674/-rw-rwxr--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.926012021 -0400
+Change: 2017-10-22 21:05:31.926012021 -0400
+ Birth: -
+  File: /var/data/file676
+  Size: 2922      	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514423    Links: 1
+Access: (0676/-rw-rwxrw-)  Uid: (    0/    root)   Gid: ( 1005/    gml8)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.926012021 -0400
+Change: 2017-10-22 21:05:31.926012021 -0400
+ Birth: -
+  File: /var/data/socket
+  Size: 0         	Blocks: 0          IO Block: 4096   socket
+Device: fd00h/64768d	Inode: 76514425    Links: 1
+Access: (0775/srwxrwxr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2017-10-20 08:53:00.748799901 -0400
+Modify: 2017-10-20 08:53:00.748799901 -0400
+Change: 2017-10-22 21:08:46.471628509 -0400
+ Birth: -
+
++-----------------------------------------------------------------------+
+| testcase 42 ./mystat /bin/true /bin/false                             |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 5...
+Your file matched the expected output
+ o Correct for Step 5 
+
++-----------------------------------------------------------------------+
+| testcase 43 ./mystat /var/data/socket /var/data/fifo                  |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 5...
+Your file matched the expected output
+ o Correct for Step 5 
+
++-----------------------------------------------------------------------+
+| testcase 44 ./mystat /var/data/afile /var/data/file616 /var/data/dir  |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 5...
+Line_12_did_not_match
+Your file did not match the expected ouput
+ o Incorrect for Step 5, expected
+  File: /var/data/afile
+  Size: 6         	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514380    Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.893977623 -0500
+Modify: 2017-10-22 21:10:22.826409765 -0400
+Change: 2017-10-22 21:10:22.826409765 -0400
+ Birth: -
+  File: /var/data/file616
+  Size: 522       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514418    Links: 1
+Access: (0616/-rw---xrw-)  Uid: ( 1001/ece551db)   Gid: ( 1004/    drew)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.918011790 -0400
+Change: 2017-10-22 21:05:31.918011790 -0400
+ Birth: -
+  File: /var/data/dir
+  Size: 6         	Blocks: 0          IO Block: 4096   directory
+Device: fd00h/64768d	Inode: 42537901    Links: 2
+Access: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-10 12:00:23.757316037 -0500
+Modify: 2017-10-22 21:13:51.512432646 -0400
+Change: 2017-10-22 21:13:51.512432646 -0400
+ Birth: -
+...but you gave: 
+  File: /var/data/afile
+  Size: 6         	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514380    Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-08 11:54:54.893977623 -0500
+Modify: 2017-10-22 21:10:22.826409765 -0400
+Change: 2017-10-22 21:10:22.826409765 -0400
+ Birth: -
+  File: /var/data/file616
+  Size: 522       	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 76514418    Links: 1
+Access: (0616/-rw-r-xrw-)  Uid: ( 1001/ece551db)   Gid: ( 1004/    drew)
+Access: 2018-11-08 11:54:54.925977652 -0500
+Modify: 2017-10-22 21:05:31.918011790 -0400
+Change: 2017-10-22 21:05:31.918011790 -0400
+ Birth: -
+  File: /var/data/dir
+  Size: 6         	Blocks: 0          IO Block: 4096   directory
+Device: fd00h/64768d	Inode: 42537901    Links: 2
+Access: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-11-10 12:00:23.757316037 -0500
+Modify: 2017-10-22 21:13:51.512432646 -0400
+Change: 2017-10-22 21:13:51.512432646 -0400
+ Birth: -
+
++-----------------------------------------------------------------------+
+| testcase 45 ./mystat doesntexist.txt                                  |
++-----------------------------------------------------------------------+
+
+  - Valgrind was clean (no errors, no memory leaks)
+**Comparing for Step 4 [ also counts for 3 2 1 ]...
+Your file matched the expected output
+ o Correct for Step 4 
+=====================
+Overall summary:
+=====================
+Step 1: 39 correct / 40 tests = 19
+Step 2: 23 correct / 40 tests = 11
+Step 3: 23 correct / 40 tests = 11
+Step 4: 23 correct / 40 tests =  5
+Step 5:  2 correct /  5 tests =  4
+Step 6:  0 correct /  1 tests =  0
+Step 7:  2 correct /  2 tests = 10
+Valgrind failures: 0  / 41  [grade multiplied by 1.0000]
+----------------------------------------------------------
+Functionality grade: 60 / 100
+  -> This is 85% of your overall grade on this assignment
+----------------------------------------------------------
+Style grade (15% of overall)
+------------------
+ + Abstraction:    4 / 5
+ + Comments:       2 / 2
+ + Variable Names: 2   / 2
+Note from the grader:
+Abstraction is good, lacking some further abstraction like allocate/init buffer for stat and get link if symlink. Comments and variable names are good.
+Total points 8 / 9 = 88.88 % 
+ -> This is 15% of your overall grade on this assignment
+Total: 0.85 * 51.00 + 0.15 * 88.88=56.68
+
+Overall Grade: 56.68
