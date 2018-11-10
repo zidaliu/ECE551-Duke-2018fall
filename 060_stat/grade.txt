@@ -1,4 +1,4 @@
-Grading at 11/10/2018:22:13:57.223590
+Grading at 11/10/2018:23:07:30.520874
 For commit ID 1f083195421266ad99b616bfe075a497c41b3c99
 Attempting to compile mystat.c
 Your code seems to compile fine.
@@ -1607,6 +1607,6 @@ Note from the grader:
 Abstraction is good, lacking some further abstraction like allocate/init buffer for stat and get link if symlink. Comments and variable names are good.
 Total points 8 / 9 = 88.88 % 
  -> This is 15% of your overall grade on this assignment
-Total: 0.85 * 51.00 + 0.15 * 88.88=56.68
+Total: 0.85 * 60 + 0.15 * 88.88=64.33
 
-Overall Grade: 56.68
+Overall Grade: 64.33
