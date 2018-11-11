@@ -1,9 +1,12 @@
-#include <stdio.h>
-#include <cstdlib>
 #include "readFreq.h"
 
+#include <stdio.h>
+
+#include <cstdlib>
+#include <fstream>
+using namespace std;
 void printSym(std::ostream & s, unsigned sym) {
-  if (sym > 256 ) {
+  if (sym > 256) {
     s << "INV";
   }
   else if (sym == 256) {
@@ -21,4 +24,12 @@ void printSym(std::ostream & s, unsigned sym) {
 }
 uint64_t * readFrequencies(const char * fname) {
   //WRITE ME!
+  ifstream f(fname);
+  char ch;
+  uint64_t * freq = new uint64_t[257]();
+  while (f.get(ch)) {
+    freq[(unsigned char)ch]++;
+  }
+  freq[256] = 1;
+  return freq;
 }
