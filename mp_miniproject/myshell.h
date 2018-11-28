@@ -1,4 +1,5 @@
 #include <dirent.h>
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -39,14 +40,15 @@ class Parents : public Process
 class Child : public Process
 {
  private:
-  char * route;
+  string route;
 
  public:
-  Child(pid_t pd, char * a) : Process(pd), route(a) { printf("This is the child %d\n", getpid()); }
+  Child(pid_t pd, string a) : Process(pd), route(a) { printf("This is the child %d\n", getpid()); }
   void execute() {
     if (!judge(route)) {  //如果不含有斜杠，就在环境变量中找
       int flag = 0;
       char * env = getenv("PATH");
+      cout << "env is " << env << endl;
       vector<string> env_list = split(env);
       for (vector<string>::iterator it = env_list.begin(); it != env_list.end(); ++it) {
         const char * address = (*it).data();
@@ -57,17 +59,34 @@ class Child : public Process
           string total_address = ss_address + '/' + ss_route;
           cout << "total_address is " << total_address << endl;
           char * envp[] = {0, NULL};
-          char * const argv[] = {route, NULL};
+          char * cstr = new char[route.length() + 1];
+          strcpy(cstr, route.c_str());
+          char * const argv[] = {cstr, NULL};
           execve(total_address.c_str(), argv, envp);
+          delete[] cstr;
         }
       }
       if (flag == 0) {  //没到到flag仍然为0
         cout << "Command " << route << " not found" << endl;
       }
     }
+    else {  //含有斜杠
+      char * envp_1[] = {0, NULL};
+      char * cstr = new char[route.length() + 1];
+      strcpy(cstr, route.c_str());
+      char * const argv_1[] = {cstr, NULL};
+      int sof;  //successful or fail
+      sof = execve(route.c_str(), argv_1, envp_1);
+      delete[] cstr;
+      if (sof == -1) {  //fail
+        cout << "execv failed" << endl;
+        char * mesg = strerror(errno);
+        cout << "errno is " << mesg << endl;
+      }
+    }
   }
 
-  bool judge(char * a) {
+  bool judge(string a) {
     string s = a;
     string::size_type idx = s.find("/");
     if (idx == string::npos) {  //不存在
@@ -94,7 +113,7 @@ class Child : public Process
     return single_address;
   }
 
-  bool findCommand(const char * path, char * instruct) {
+  bool findCommand(const char * path, string instruct) {
     struct dirent * filename;  // return value for readdir()
     DIR * dir;
     bool condition = false;
