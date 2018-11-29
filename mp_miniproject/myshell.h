@@ -79,23 +79,41 @@ class Child : public Process
       }
     }
     else {  //含有斜杠
-      char * envp_1[] = {0, NULL};
-      //char * cstr = new char[route.length() + 1];
-      //strcpy(cstr, route.c_str());
-      //char * const argv_1[] = {cstr, NULL};
-      char ** argv = new char *[parameter_list.size() + 2];
-      construct_parameter(argv, route, parameter_list);
-      int sof;  //successful or fail
-      sof = execve(route.c_str(), argv, envp_1);
-      free_pm(argv);
-      //delete[] cstr;
-      if (sof == -1) {  //fail
-        cout << "execv failed" << endl;
-        char * mesg = strerror(errno);
-        cout << "errno is " << mesg << endl;
+      if (check_command(route)) {
+        char * envp_1[] = {0, NULL};
+        char ** argv = new char *[parameter_list.size() + 2];
+        construct_parameter(argv, route, parameter_list);
+        int sof;  //successful or fail
+        sof = execve(route.c_str(), argv, envp_1);
+        free_pm(argv);
+        if (sof == -1) {  //fail
+          cout << "execv failed" << endl;
+          char * mesg = strerror(errno);
+          cout << "errno is " << mesg << endl;
+        }
       }
     }
   }
+  bool check_command(string route) {
+    bool status = true;
+    struct stat st;
+    const char * path = route.c_str();
+    if (lstat(path, &st) < 0) {
+      cout << route << " not such file or dir" << endl;
+      status = false;
+    }
+    else {
+      if (S_ISDIR(st.st_mode)) {
+        cout << route << " is a dir" << endl;
+        status = false;
+      }
+      else if (!S_ISREG(st.st_mode)) {
+        cout << route << " not such file or dir" << endl;
+        status = false;
+      }
+    }
+    return status;
+  };
 
   void construct_parameter(char **& a, string route, vector<string> parameter_list) {
     char * cstr = new char[route.length() + 1];

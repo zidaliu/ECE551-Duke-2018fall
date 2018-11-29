@@ -63,8 +63,8 @@ int main() {
         vector<string> final_parameter = getparmeter(parameters);
         Child child(pid, commond, final_parameter);
         child.execute();
-      }
-      exit(0);  //子进程正常退出
+      }  //子进程正常退出
+      return 0;
     }
   }
 }

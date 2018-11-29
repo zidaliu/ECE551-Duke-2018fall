@@ -10,15 +10,18 @@ vector<string> getparmeter(string parmeter);
 void divided(string temp, string & command, string & pameters);
 
 void divided(string temp, string & command, string & pameters) {
-  // size_t first_space = temp.find(" ");
-  //cout << first_space << endl;
-  if (string::npos != temp.find(" ")) {
-    size_t first_space = temp.find(" ");
-    command = temp.substr(0, first_space);
-    pameters = temp.substr(first_space + 1);
+  int index = 0;
+  while (temp[index] == ' ') {
+    index++;
+  }
+  string re_temp = temp.substr(index);
+  if (string::npos != re_temp.find(" ")) {
+    size_t first_space = re_temp.find(" ");
+    command = re_temp.substr(0, first_space);
+    pameters = re_temp.substr(first_space + 1);
   }
   else {
-    command = temp;
+    command = re_temp;
   }
 }
 
