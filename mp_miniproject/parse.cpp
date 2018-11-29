@@ -1,51 +1,12 @@
+#include "parse.h"
+
 #include <string.h>
 
 #include <iostream>
 #include <vector>
 using namespace std;
-
-void divided(string temp, string & command, string & pameters);
-vector<string> getparmeter(string init_par);
+/*
 vector<string> reshape(vector<pair<char, int> > record);
-
-int main() {
-  while (1) {
-    cout << "myShell$";
-    char c;
-    vector<char> a;
-    string temp;
-    while ((c = getchar()) != '\n') {
-      if (c != EOF) {
-        a.push_back(c);
-      }
-      else {
-        cout << endl;
-        exit(0);
-      }
-    }
-    if (a.size() != 0) {
-      a.push_back('\0');
-      temp = a.data();
-      string exit_line = "exit";
-      if (temp == exit_line) {
-        exit(0);
-      }
-    }
-    else {
-      continue;
-    }
-    string commond;
-    string parameters;
-    divided(temp, commond, parameters);
-    if (parameters.length() > 0) {
-      vector<string> final_parameter = getparmeter(parameters);
-    }
-    //        for(int i =0;i<final_parameter.size();i++){
-    //            cout<<final_parameter[i]<<endl;
-    //        }
-  }
-}
-
 void divided(string temp, string & command, string & pameters) {
   // size_t first_space = temp.find(" ");
   //cout << first_space << endl;
@@ -81,18 +42,15 @@ vector<string> getparmeter(string parmeter) {
   }
 
   vector<string> final_parameter = reshape(record);
-  //        for(int i =0;i<final_parameter.size();i++){
-  //            cout<<final_parameter[i]<<endl;
-  //        }
   return final_parameter;
 }
 
 vector<string> reshape(vector<pair<char, int> > record) {
   vector<string> parameter;
+  char space = ' ';
   for (size_t i = 0; i < record.size(); i++) {
     vector<char> temp;
-    char space = ' ';
-    while ((record[i].first != space || record[i].second == 1) && (i < record.size())) {
+    while ((i < record.size()) && (record[i].first != space || record[i].second == 1)) {
       temp.push_back(record[i].first);
       i++;
     }
@@ -100,10 +58,48 @@ vector<string> reshape(vector<pair<char, int> > record) {
       if (!(record[i - 1].first == space && record[i - 1].second == 0)) {
         char p = '\0';
         temp.push_back(p);
-        cout << temp.data() << endl;
         parameter.push_back(temp.data());
       }
     }
   }
   return parameter;
+}
+*/
+
+int main() {
+  while (1) {
+    cout << "myShell$";
+    char c;
+    vector<char> a;
+    string temp;
+    while ((c = getchar()) != '\n') {
+      if (c != EOF) {
+        a.push_back(c);
+      }
+      else {
+        cout << endl;
+        exit(0);
+      }
+    }
+    if (a.size() != 0) {
+      a.push_back('\0');
+      temp = a.data();
+      string exit_line = "exit";
+      if (temp == exit_line) {
+        exit(0);
+      }
+    }
+    else {
+      continue;
+    }
+    string commond;
+    string parameters;
+    divided(temp, commond, parameters);
+    if (parameters.length() > 0) {
+      vector<string> final_parameter = getparmeter(parameters);
+      for (size_t i = 0; i < final_parameter.size(); i++) {
+        cout << final_parameter[i] << endl;
+      }
+    }
+  }
 }

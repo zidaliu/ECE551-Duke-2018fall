@@ -5,6 +5,8 @@
 
 #include <iostream>
 #include <vector>
+
+#include "parse.h"
 using namespace std;
 
 void divided(string temp, string & command, string & pameters);
@@ -51,22 +53,18 @@ int main() {
     else {
       //子进程
       string commond;
-      string parmeters;
-      divided(temp, commond, parmeters);
-      Child child(pid, commond);
-      child.execute();
+      string parameters;
+      divided(temp, commond, parameters);
+      if (parameters.length() <= 0) {
+        Child child(pid, commond);  //no parmeters
+        child.execute();
+      }
+      else {  //has parmeters
+        vector<string> final_parameter = getparmeter(parameters);
+        Child child(pid, commond, final_parameter);
+        child.execute();
+      }
       exit(0);  //子进程正常退出
     }
-  }
-}
-
-void divided(string temp, string & command, string & pameters) {
-  int first_space = temp.find(" ");
-  if (first_space > 0) {
-    command = temp.substr(0, first_space);
-    pameters = temp.substr(first_space);
-  }
-  else {
-    command = temp;
   }
 }

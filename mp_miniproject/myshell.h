@@ -41,9 +41,18 @@ class Child : public Process
 {
  private:
   string route;
+  vector<string> parameter_list;
 
  public:
-  Child(pid_t pd, string a) : Process(pd), route(a) { printf("This is the child %d\n", getpid()); }
+  Child(pid_t pd, string a) : Process(pd), route(a), parameter_list(0) {
+    printf("This is the child %d\n", getpid());
+  }
+
+  Child(pid_t pd, string a, vector<string> parameters) : Process(pd), route(a) {
+    printf("This is the child %d\n", getpid());
+    parameter_list = parameters;
+  }
+
   void execute() {
     if (!judge(route)) {  //如果不含有斜杠，就在环境变量中找
       int flag = 0;
@@ -59,11 +68,10 @@ class Child : public Process
           string total_address = ss_address + '/' + ss_route;
           cout << "total_address is " << total_address << endl;
           char * envp[] = {0, NULL};
-          char * cstr = new char[route.length() + 1];
-          strcpy(cstr, route.c_str());
-          char * const argv[] = {cstr, NULL};
+          char ** argv = new char *[parameter_list.size() + 2];
+          construct_parameter(argv, route, parameter_list);
           execve(total_address.c_str(), argv, envp);
-          delete[] cstr;
+          free_pm(argv);
         }
       }
       if (flag == 0) {  //没到到flag仍然为0
@@ -72,18 +80,41 @@ class Child : public Process
     }
     else {  //含有斜杠
       char * envp_1[] = {0, NULL};
-      char * cstr = new char[route.length() + 1];
-      strcpy(cstr, route.c_str());
-      char * const argv_1[] = {cstr, NULL};
+      //char * cstr = new char[route.length() + 1];
+      //strcpy(cstr, route.c_str());
+      //char * const argv_1[] = {cstr, NULL};
+      char ** argv = new char *[parameter_list.size() + 2];
+      construct_parameter(argv, route, parameter_list);
       int sof;  //successful or fail
-      sof = execve(route.c_str(), argv_1, envp_1);
-      delete[] cstr;
+      sof = execve(route.c_str(), argv, envp_1);
+      free_pm(argv);
+      //delete[] cstr;
       if (sof == -1) {  //fail
         cout << "execv failed" << endl;
         char * mesg = strerror(errno);
         cout << "errno is " << mesg << endl;
       }
     }
+  }
+
+  void construct_parameter(char **& a, string route, vector<string> parameter_list) {
+    char * cstr = new char[route.length() + 1];
+    strcpy(cstr, route.c_str());
+    a[0] = cstr;
+    for (size_t i = 0; i < parameter_list.size(); i++) {
+      char * parameter_address = new char[parameter_list[i].length() + 1];
+      strcpy(parameter_address, parameter_list[i].c_str());
+      a[i + 1] = parameter_address;
+    }
+    a[parameter_list.size() + 1] = NULL;
+  }
+
+  void free_pm(char **& a) {
+    int i = 0;
+    while (a[i] != NULL) {
+      delete[] a[i];
+    }
+    delete[] a;
   }
 
   bool judge(string a) {

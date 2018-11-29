@@ -1,4 +1,0 @@
-myshell: myshell.cpp
-	g++ -ggdb3 -Wall -Werror -pedantic -o myshell myshell.cpp
-clean:
-	rm myshell *~
