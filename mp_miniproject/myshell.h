@@ -9,6 +9,7 @@
 #include <unistd.h>
 
 #include <iostream>
+#include <unordered_map>
 #include <vector>
 using namespace std;
 
@@ -42,15 +43,18 @@ class Child : public Process
  private:
   string route;
   vector<string> parameter_list;
+  //  unordered_map<string, int> self_command_list;
 
  public:
   Child(pid_t pd, string a) : Process(pd), route(a), parameter_list(0) {
     printf("This is the child %d\n", getpid());
+    // self_command_list["cd"] = 1;
   }
 
   Child(pid_t pd, string a, vector<string> parameters) : Process(pd), route(a) {
     printf("This is the child %d\n", getpid());
     parameter_list = parameters;
+    // self_command_list["cd"] = 1;
   }
 
   void execute() {
@@ -74,6 +78,7 @@ class Child : public Process
           free_pm(argv);
         }
       }
+      //  self_func(route, parameter_list, flag);
       if (flag == 0) {  //没到到flag仍然为0
         cout << "Command " << route << " not found" << endl;
       }
@@ -94,6 +99,43 @@ class Child : public Process
       }
     }
   }
+
+  /*  void self_func(string key, vector<string> parameters, int & flag) {
+    if (self_command_list.find(key) == self_command_list.end()) {
+      flag = 0;
+      cout << "not find!" << endl;
+    }
+    else {
+      int record_number = self_command_list[key];
+      judge_selfFunc(record_number, parameters);
+      flag = 1;
+      cout << "find!" << endl;
+    }
+  }
+
+  void judge_selfFunc(int number, vector<string> parameters) {
+    switch (number) {
+      case 1:
+        change_dir(parameters);
+        cout << "find! case1" << endl;
+        break;
+    }
+  }
+
+  void change_dir(vector<string> parameters) {
+    if (parameters.size() == 0) {
+      return;
+    }
+    else if (parameters.size() == 1) {
+      cout << "run cd" << parameters[0] << endl;
+      chdir(parameters[0].c_str());
+      return;
+    }
+    else {
+      cout << "Invaild Route " << parameters[0] << endl;
+    }
+  }
+  */
   bool check_command(string route) {
     bool status = true;
     struct stat st;
