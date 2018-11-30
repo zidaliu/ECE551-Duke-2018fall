@@ -13,6 +13,7 @@ using namespace std;
 
 int main() {
   unordered_map<string, int> self_command_list;
+  unordered_map<string, string> var_list;
   self_command_list["cd"] = 1;  //self_define operations for specially parent process
   while (1) {
     print_path();
@@ -41,22 +42,42 @@ int main() {
     else {
       continue;
     }
-    cout << "Before fork is " << temp << endl;
-
+    // cout << "Before fork is " << temp << endl;
     //得到参数列表
     string commond;
     string parameters;
     divided(temp, commond, parameters);
     vector<string> final_parameter = getparmeter(parameters);
-    /*fork一个子进程*/
-    pid = fork();
-    if (pid < 0) {
-      perror("fork error");
-      exit(0);
+    if (self_command_list.find(commond) != self_command_list.end()) {
+      switch (self_command_list[commond]) {
+        case 1:
+          change_dir(final_parameter);
+          break;
+      }
     }
-    else if (pid <= 0) {
-      //子进程,not find in the parents process
-      if (self_command_list.find(commond) == self_command_list.end()) {
+    else if (commond.find('=') != string::npos) {  //set var
+      string var;
+      string value;
+      split_var(commond, var, value);
+      var_list[var] = value;
+    }
+    else if (commond.find('$') != string::npos) {
+      vector<string> value_list;
+      int rof = get_value_list(commond, var_list, value_list);
+      if (rof == 1) {
+        cout << "Your input cotains invaild var" << endl;
+      }
+      else {
+        print_value(value_list);
+      }
+    }
+    else {
+      pid = fork();
+      if (pid < 0) {
+        perror("fork error");
+        exit(0);
+      }
+      else if (pid <= 0) {
         if (parameters.length() <= 0) {
           Child child(pid, commond);  //no parmeters
           child.execute();
@@ -67,19 +88,8 @@ int main() {
         }  //子进程正常退出
         return 0;
       }
-      else {  //find in the parents process, child process don't do anything
-        return 0;
-      }
-    }
-    else {
-      //父进程
-      Parents parent(pid);
-      if (self_command_list.find(commond) != self_command_list.end()) {
-        switch (self_command_list[commond]) {
-          case 1:
-            change_dir(final_parameter);
-            break;
-        }
+      else {
+        Parents parent(pid);
       }
     }
   }
