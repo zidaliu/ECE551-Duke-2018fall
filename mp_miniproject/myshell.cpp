@@ -2,50 +2,25 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 
 #include <iostream>
 #include <unordered_map>
 #include <vector>
 
+#include "parents.h"
 #include "parse.h"
 using namespace std;
 
-void divided(string temp, string & command, string & pameters);
-
-void change_dir(vector<string> parameters) {
-  if (parameters.size() == 0) {
-    return;
-  }
-  else if (parameters.size() == 1) {
-    int i = chdir(parameters[0].c_str());
-    if (i == -1) {
-      char * mesg = strerror(errno);
-      cout << mesg << endl;
-    }
-    return;
-  }
-  else {
-    cout << "You input multi_dir, input again" << endl;
-  }
-}
-
-void print_path() {
-  char * path = NULL;
-  path = getcwd(NULL, 0);
-  cout << "myShell:" << path << "$";
-  free(path);
-}
-
 int main() {
+  unordered_map<string, int> self_command_list;
+  self_command_list["cd"] = 1;  //self_define operations for specially parent process
   while (1) {
     print_path();
     char c;
     vector<char> a;
     pid_t pid;
     string temp;
-    unordered_map<string, int> self_command_list;
-    self_command_list["cd"] = 1;
+
     while ((c = getchar()) != '\n') {
       if (c != EOF) {
         a.push_back(c);
@@ -66,7 +41,6 @@ int main() {
     else {
       continue;
     }
-
     cout << "Before fork is " << temp << endl;
 
     //得到参数列表
@@ -74,7 +48,6 @@ int main() {
     string parameters;
     divided(temp, commond, parameters);
     vector<string> final_parameter = getparmeter(parameters);
-
     /*fork一个子进程*/
     pid = fork();
     if (pid < 0) {
@@ -82,7 +55,7 @@ int main() {
       exit(0);
     }
     else if (pid <= 0) {
-      //子进程
+      //子进程,not find in the parents process
       if (self_command_list.find(commond) == self_command_list.end()) {
         if (parameters.length() <= 0) {
           Child child(pid, commond);  //no parmeters
@@ -94,7 +67,7 @@ int main() {
         }  //子进程正常退出
         return 0;
       }
-      else {
+      else {  //find in the parents process, child process don't do anything
         return 0;
       }
     }
