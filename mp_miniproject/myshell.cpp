@@ -65,7 +65,9 @@ int main() {
       vector<string> value_list;
       int rof = get_value_list(commond, var_list, value_list);
       if (rof == 1) {
-        cout << "Your input cotains invaild var" << endl;
+        if (!add_charactor(commond, var_list)) {
+          cout << "Your input cotains invaild var" << endl;
+        }
       }
       else {
         print_value(value_list);

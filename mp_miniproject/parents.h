@@ -1,4 +1,3 @@
-
 #include <vector>
 using namespace std;
 #include <errno.h>
@@ -75,4 +74,18 @@ void print_value(vector<string> value_list) {
     cout << value_list[i];
   }
   cout << endl;
+}
+
+bool add_charactor(string commond, unordered_map<string, string> var_list) {
+  bool status = false;
+  string true_var = commond.substr(commond.find('$') + 1);
+  unordered_map<string, string>::iterator p;
+  for (p = var_list.begin(); p != var_list.end(); p++) {
+    if (true_var.find(p->first) != string::npos) {
+      cout << p->second << true_var.substr(true_var.find(p->first) + (p->first).length()) << endl;
+      status = true;
+      break;
+    }
+  }
+  return status;
 }
