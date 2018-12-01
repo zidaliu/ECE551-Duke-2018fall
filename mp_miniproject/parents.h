@@ -5,7 +5,59 @@ using namespace std;
 #include <unistd.h>
 
 #include <iostream>
+#include <sstream>
 #include <unordered_map>
+
+bool isNum(string str) {
+  stringstream sin(str);
+  double d;
+  char c;
+  if (!(sin >> d)) {
+    return false;
+  }
+  if (sin >> c) {
+    return false;
+  }
+  return true;
+}
+
+void inc_varible(string var, unordered_map<string, string> & var_list) {
+  if (var_list.find(var) == var_list.end()) {
+    cout << "please set var first!" << endl;
+  }
+  else {
+    if (isNum(var_list[var])) {
+      int n = atoi(var_list[var].c_str());
+      n++;
+      stringstream ss;
+      ss << n;
+      ss >> var_list[var];
+    }
+    else {
+      var_list[var] = "1";
+    }
+  }
+}
+void export_varible(string var, unordered_map<string, string> & var_list) {
+  if (var_list.find(var) == var_list.end()) {
+    cout << "please set var first!" << endl;
+  }
+  else {
+    setenv(var.c_str(), var_list[var].c_str(), 1);
+  }
+}
+
+void set_commond(unordered_map<string, string> & var_list, string var_value) {
+  if (var_value.find(' ') != string::npos) {
+    size_t found = var_value.find(' ');
+    string key = var_value.substr(0, found);
+    string value = var_value.substr(found + 1);
+    var_list[key] = value;
+  }
+  else {
+    cout << "set commond need a value for your varible" << endl;
+  }
+}
 
 void change_dir(vector<string> parameters) {
   if (parameters.size() == 0) {

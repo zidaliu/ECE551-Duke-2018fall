@@ -1,4 +1,3 @@
-
 #include <dirent.h>
 #include <errno.h>
 #include <stdio.h>
@@ -13,7 +12,7 @@
 #include <unordered_map>
 #include <vector>
 using namespace std;
-
+extern char ** environ;
 class Process
 {
  protected:
@@ -62,13 +61,7 @@ class Child : public Process
     if (!judge(route)) {  //如果不含有斜杠，就在环境变量中找
       int flag = 0;
       char * env = getenv("PATH");
-      /*char a[300];
-      char b[100];
-      strcpy(a, "PATH=");
-      strcpy(b, env);
-      strcat(a, b);*/
-      //char a[300];
-      //strcpy(a, "PATH=/bin");
+      //char a[] = "a=1";
       cout << "env is " << env << endl;
       vector<string> env_list = split(env);
       for (vector<string>::iterator it = env_list.begin(); it != env_list.end(); ++it) {
@@ -79,10 +72,10 @@ class Child : public Process
           string ss_route = route;
           string total_address = ss_address + '/' + ss_route;
           cout << "total_address is " << total_address << endl;
-          char * envp[] = {0, NULL};
+          //char * envp[] = environ;
           char ** argv = new char *[parameter_list.size() + 2];
           construct_parameter(argv, route, parameter_list);
-          execve(total_address.c_str(), argv, envp);
+          execve(total_address.c_str(), argv, environ);
           free_pm(argv);
         }
       }
@@ -93,14 +86,10 @@ class Child : public Process
     }
     else {  //含有斜杠
       if (check_command(route)) {
-        //char * env = getenv("PATH");
-        char a[200] = "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/"
-                      "games:/usr/local/games";
-        char * envp_1[] = {a, NULL};
         char ** argv = new char *[parameter_list.size() + 2];
         construct_parameter(argv, route, parameter_list);
         int sof;  //successful or fail
-        sof = execve(route.c_str(), argv, envp_1);
+        sof = execve(route.c_str(), argv, environ);
         free_pm(argv);
         if (sof == -1) {  //fail
           cout << "execv failed" << endl;

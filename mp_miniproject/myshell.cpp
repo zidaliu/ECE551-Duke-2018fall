@@ -14,7 +14,10 @@ using namespace std;
 int main() {
   unordered_map<string, int> self_command_list;
   unordered_map<string, string> var_list;
-  self_command_list["cd"] = 1;  //self_define operations for specially parent process
+  self_command_list["cd"] = 1;      //self_define operations for specially parent process
+  self_command_list["set"] = 2;     //set varble value
+  self_command_list["export"] = 3;  //set envir varble
+  self_command_list["inc"] = 4;
   while (1) {
     print_path();
     char c;
@@ -52,6 +55,15 @@ int main() {
       switch (self_command_list[commond]) {
         case 1:
           change_dir(final_parameter);
+          break;
+        case 2:
+          set_commond(var_list, parameters);
+          break;
+        case 3:
+          export_varible(parameters, var_list);
+          break;
+        case 4:
+          inc_varible(parameters, var_list);
           break;
       }
     }
