@@ -72,9 +72,10 @@ int main() {
     }
     else if (commond.find('$') == 0) {
       vector<string> value_list;
+      /*get value list of var list, eg: var1=1 var2=2 then excute $var1$var2, the value_list is 12. if there exist a var not in the var_list, then return 1*/
       int rof = get_value_list(commond, var_list, value_list);
       if (rof == 1) {
-        if (!add_charactor(commond, var_list)) {
+        if (!add_multicharactor(commond, var_list)) {
           cout << "Your input cotains a invaild var" << endl;
         }
       }

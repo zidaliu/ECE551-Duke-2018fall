@@ -10,22 +10,22 @@ using namespace std;
 #include <unordered_map>
 
 bool legal_varname(string var) {
-  bool status = true;
+  bool status = true;  // record wether the name is legal
   vector<int> legalASCI;
   for (int n = 48; n < 58; n++) {
-    legalASCI.push_back(n);  //0~9
+    legalASCI.push_back(n);  //add"0~9"
   }
-  for (int i = 65; i < 91; i++) {  //A~Z
+  for (int i = 65; i < 91; i++) {  //add"A~Z"
     legalASCI.push_back(i);
   }
   legalASCI.push_back(95);  //add "_"
   for (int j = 97; j < 123; j++) {
     legalASCI.push_back(j);  //a~z
   }
-  for (size_t k = 0; k < var.length(); k++) {  //judge the varble name
+  for (size_t k = 0; k < var.length(); k++) {  //judge the varble name iteratly
     int ascii;
     ascii = var[k];
-    cout << ascii << endl;
+    //    cout << ascii << endl;
     if (count(legalASCI.begin(), legalASCI.end(), ascii) == 0) {
       status = false;
     }
@@ -33,7 +33,7 @@ bool legal_varname(string var) {
   return status;
 }
 
-bool isNum(string str) {
+bool isNum(string str) {  //judge the varible's value whether is a number based on 10
   stringstream sin(str);
   double d;
   char c;
@@ -55,7 +55,7 @@ void inc_varible(vector<string> var, unordered_map<string, string> & var_list) {
       cout << "please set (" << var[i] << ") first!" << endl;
     }
     else {
-      if (isNum(var_list[var[i]])) {
+      if (isNum(var_list[var[i]])) {  // is a number based on 10
         int n = atoi(var_list[var[i]].c_str());
         n++;
         stringstream ss;
@@ -63,7 +63,7 @@ void inc_varible(vector<string> var, unordered_map<string, string> & var_list) {
         ss >> var_list[var[i]];
       }
       else {
-        var_list[var[i]] = "1";
+        var_list[var[i]] = "1";  // not number set as "1"
       }
     }
   }
@@ -151,17 +151,19 @@ void split_var(string command, string & var, string & value) {
   value = command.substr(found + 1);
 }
 
-int get_value_list(string commond,
-                   unordered_map<string, string> var_list,
-                   vector<string> & value_list) {
-  string temp = commond;
-  vector<int> index_list;
+void get_keyindex(string temp, vector<int> & index_list) {
   while (temp.find('$') != string::npos) {
     int index = temp.find('$');
     index_list.push_back(index);
     temp[index] = 'a';
   }
+}
 
+int get_value_list(string commond,
+                   unordered_map<string, string> var_list,
+                   vector<string> & value_list) {
+  vector<int> index_list;  //record the index of "$" in the commond
+  get_keyindex(commond, index_list);
   size_t i = 0;
   string key;
   for (i = 0; i < index_list.size() - 1; i++) {
@@ -189,14 +191,37 @@ void print_value(vector<string> value_list) {
   }
   cout << endl;
 }
+bool add_charactor(string commond, unordered_map<string, string> var_list);
+bool add_multicharactor(string commond, unordered_map<string, string> var_list) {
+  bool status = true;
+  vector<int> index_list;
+  get_keyindex(commond, index_list);
+  size_t i = 0;
+  string key;
+  for (i = 0; i < index_list.size() - 1; i++) {
+    key = commond.substr(index_list[i] + 1, index_list[i + 1] - 1);
+    if (!add_charactor(key, var_list)) {
+      return false;
+    }
+  }
+
+  key = commond.substr(index_list[i] + 1);
+
+  if (!add_charactor(key, var_list)) {
+    status = false;
+  }
+  cout << endl;
+  return status;
+}
 
 bool add_charactor(string commond, unordered_map<string, string> var_list) {
   bool status = false;
-  string true_var = commond.substr(commond.find('$') + 1);
+  string true_var = commond;
+
   unordered_map<string, string>::iterator p;
   for (p = var_list.begin(); p != var_list.end(); p++) {
     if (true_var.find(p->first) != string::npos) {
-      cout << p->second << true_var.substr(true_var.find(p->first) + (p->first).length()) << endl;
+      cout << p->second << true_var.substr(true_var.find(p->first) + (p->first).length());
       status = true;
       break;
     }
