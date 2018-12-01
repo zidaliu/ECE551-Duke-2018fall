@@ -4,9 +4,34 @@ using namespace std;
 #include <string.h>
 #include <unistd.h>
 
+#include <algorithm>
 #include <iostream>
 #include <sstream>
 #include <unordered_map>
+
+bool legal_varname(string var) {
+  bool status = true;
+  vector<int> legalASCI;
+  for (int n = 48; n < 58; n++) {
+    legalASCI.push_back(n);  //0~9
+  }
+  for (int i = 65; i < 91; i++) {  //A~Z
+    legalASCI.push_back(i);
+  }
+  legalASCI.push_back(95);  //add "_"
+  for (int j = 97; j < 123; j++) {
+    legalASCI.push_back(j);  //a~z
+  }
+  for (size_t k = 0; k < var.length(); k++) {  //judge the varble name
+    int ascii;
+    ascii = var[k];
+    cout << ascii << endl;
+    if (count(legalASCI.begin(), legalASCI.end(), ascii) == 0) {
+      status = false;
+    }
+  }
+  return status;
+}
 
 bool isNum(string str) {
   stringstream sin(str);
@@ -21,32 +46,43 @@ bool isNum(string str) {
   return true;
 }
 
-void inc_varible(string var, unordered_map<string, string> & var_list) {
-  if (var_list.find(var) == var_list.end()) {
-    cout << "please set var first!" << endl;
+void inc_varible(vector<string> var, unordered_map<string, string> & var_list) {
+  if (var.size() < 1) {
+    cout << "inc at least one var" << endl;
   }
-  else {
-    if (isNum(var_list[var])) {
-      int n = atoi(var_list[var].c_str());
-      n++;
-      stringstream ss;
-      ss << n;
-      ss >> var_list[var];
+  for (size_t i = 0; i < var.size(); i++) {
+    if (var_list.find(var[i]) == var_list.end()) {
+      cout << "please set (" << var[i] << ") first!" << endl;
     }
     else {
-      var_list[var] = "1";
+      if (isNum(var_list[var[i]])) {
+        int n = atoi(var_list[var[i]].c_str());
+        n++;
+        stringstream ss;
+        ss << n;
+        ss >> var_list[var[i]];
+      }
+      else {
+        var_list[var[i]] = "1";
+      }
     }
   }
 }
-void export_varible(string var, unordered_map<string, string> & var_list) {
-  if (var_list.find(var) == var_list.end()) {
-    cout << "please set var first!" << endl;
+void export_varible(vector<string> var, unordered_map<string, string> & var_list) {
+  if (var.size() < 1) {
+    cout << "export at least one var" << endl;
   }
   else {
-    setenv(var.c_str(), var_list[var].c_str(), 1);
+    for (size_t i = 0; i < var.size(); i++) {
+      if (var_list.find(var[i]) == var_list.end()) {
+        cout << "please set (" << var[i] << ") first!" << endl;
+      }
+      else {
+        setenv(var[i].c_str(), var_list[var[i]].c_str(), 1);
+      }
+    }
   }
 }
-
 void set_commond(unordered_map<string, string> & var_list, string var_value) {
   if (var_value.find(' ') != string::npos) {
     size_t found = var_value.find(' ');
@@ -81,6 +117,32 @@ void print_path() {
   path = getcwd(NULL, 0);
   cout << "myShell:" << path << "$";
   free(path);
+}
+
+void split_var(string command, string & var, string & value);
+
+void assign_var(string commond,
+                vector<string> parmeters,
+                unordered_map<string, string> & var_list) {
+  string var;
+  string value;
+  split_var(commond, var, value);
+  if (legal_varname(var)) {
+    var_list[var] = value;
+  }
+  else {
+    cout << var << " is a ilegal var name" << endl;
+  }
+
+  for (size_t i = 0; i < parmeters.size(); i++) {
+    split_var(parmeters[i], var, value);
+    if (legal_varname(var)) {
+      var_list[var] = value;
+    }
+    else {
+      cout << var << " is a ilegal var name" << endl;
+    }
+  }
 }
 
 void split_var(string command, string & var, string & value) {

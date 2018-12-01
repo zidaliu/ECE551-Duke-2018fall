@@ -60,25 +60,22 @@ int main() {
           set_commond(var_list, parameters);
           break;
         case 3:
-          export_varible(parameters, var_list);
+          export_varible(final_parameter, var_list);
           break;
         case 4:
-          inc_varible(parameters, var_list);
+          inc_varible(final_parameter, var_list);
           break;
       }
     }
     else if (commond.find('=') != string::npos) {  //set var
-      string var;
-      string value;
-      split_var(commond, var, value);
-      var_list[var] = value;
+      assign_var(commond, final_parameter, var_list);
     }
-    else if (commond.find('$') != string::npos) {
+    else if (commond.find('$') == 0) {
       vector<string> value_list;
       int rof = get_value_list(commond, var_list, value_list);
       if (rof == 1) {
         if (!add_charactor(commond, var_list)) {
-          cout << "Your input cotains invaild var" << endl;
+          cout << "Your input cotains a invaild var" << endl;
         }
       }
       else {
