@@ -88,7 +88,12 @@ void set_commond(unordered_map<string, string> & var_list, string var_value) {
     size_t found = var_value.find(' ');
     string key = var_value.substr(0, found);
     string value = var_value.substr(found + 1);
-    var_list[key] = value;
+    if (legal_varname(key)) {
+      var_list[key] = value;
+    }
+    else {
+      cout << key << " is a ilegal var name" << endl;
+    }
   }
   else {
     cout << "set commond need a value for your varible" << endl;
