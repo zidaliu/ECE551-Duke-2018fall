@@ -4,9 +4,12 @@
 
 #include <iostream>
 #include <vector>
+
+#include "parents.h"
 using namespace std;
 
 int main() {
+  unordered_map<string, string> var_list;
   while (1) {
     cout << "myShell$";
     char c;
@@ -18,7 +21,8 @@ int main() {
       }
       else {
         cout << endl;
-        exit(0);
+        return 0;
+        ;
       }
     }
     if (a.size() != 0) {
@@ -26,7 +30,7 @@ int main() {
       temp = a.data();
       string exit_line = "exit";
       if (temp == exit_line) {
-        exit(0);
+        return 0;
       }
     }
     else {
@@ -35,11 +39,16 @@ int main() {
     string commond;
     string parameters;
     divided(temp, commond, parameters);
-    if (parameters.length() > 0) {
-      vector<string> final_parameter = getparmeter(parameters);
-      for (size_t i = 0; i < final_parameter.size(); i++) {
-        cout << final_parameter[i] << endl;
-      }
+    vector<string> final_parameter = getparmeter(parameters);
+    find_realvaule(commond, final_parameter, var_list);
+
+    cout << "aft commond is " << commond << endl;
+    for (size_t i = 0; i < final_parameter.size(); i++) {
+      cout << "aft parmater is " << final_parameter[i] << endl;
+    }
+    if (commond.find('=') != string::npos) {
+      assign_var(commond, final_parameter, var_list);
     }
   }
+  return 0;
 }

@@ -83,11 +83,33 @@ void export_varible(vector<string> var, unordered_map<string, string> & var_list
     }
   }
 }
-void set_commond(unordered_map<string, string> & var_list, string var_value) {
+void set_commond(unordered_map<string, string> & var_list,
+                 string var_value,
+                 vector<string> final_parameters) {
+  cout << var_value << endl;
   if (var_value.find(' ') != string::npos) {
     size_t found = var_value.find(' ');
     string key = var_value.substr(0, found);
     string value = var_value.substr(found + 1);
+    string temp;
+    size_t k = 1;
+    bool status = false;
+    for (size_t i = 0; i < value.length(); i++) {
+      if (value[i] == ' ') {
+        temp = temp + value[i];
+        status = false;
+      }
+      else if ((value[i] != ' ') && (status == false)) {
+        //        cout << final_parameters[k] << " is fp" << endl;
+        if (k < final_parameters.size()) {
+          temp = temp + final_parameters[k];
+          k++;
+          status = true;
+        }
+      }
+    }
+    // cout << temp << " is value" << endl;
+    value = temp;
     if (legal_varname(key)) {
       var_list[key] = value;
     }
@@ -157,11 +179,36 @@ void split_var(string command, string & var, string & value) {
 }
 
 void get_keyindex(string temp, vector<int> & index_list) {
+  //  cout << "in 160 temp is " << temp << endl;
   while (temp.find('$') != string::npos) {
     int index = temp.find('$');
+    //  cout << "index is " << index << endl;
     index_list.push_back(index);
     temp[index] = 'a';
+    //cout << "in 165 temp is " << temp << endl;
   }
+}
+
+bool add_charactor(string commond,
+                   unordered_map<string, string> var_list,
+                   vector<string> & value_list) {
+  bool status = false;
+  string true_var = commond;
+
+  unordered_map<string, string>::iterator p;
+  for (p = var_list.begin(); p != var_list.end(); p++) {
+    if (true_var.find(p->first) != string::npos) {
+      value_list.push_back(p->second +
+                           true_var.substr(true_var.find(p->first) + (p->first).length()));
+      status = true;
+      break;
+    }
+  }
+  if (status == false) {
+    value_list.push_back("$" + commond);
+  }
+
+  return status;
 }
 
 int get_value_list(string commond,
@@ -169,23 +216,39 @@ int get_value_list(string commond,
                    vector<string> & value_list) {
   vector<int> index_list;  //record the index of "$" in the commond
   get_keyindex(commond, index_list);
+
+  //for (size_t i = 0; i < index_list.size() - 1; i++) {
+  // cout << index_list[i] << endl;
+  // }
+
   size_t i = 0;
   string key;
   for (i = 0; i < index_list.size() - 1; i++) {
-    key = commond.substr(index_list[i] + 1, index_list[i + 1] - 1);
+    //cout << "index range " << index_list[i] + 1 << index_list[i + 1] - 1 << endl;
+    //cout << "index range commond " << commond << endl;
+    key = commond.substr(index_list[i] + 1, (index_list[i + 1] - 1 - index_list[i]));
+    // cout << "In 197 key is " << key << endl;
     if (var_list.find(key) != var_list.end()) {
       value_list.push_back(var_list[key]);
+      //cout << "In 200 push_vaule_back is " << var_list[key] << endl;
     }
     else {
-      return 1;
+      if (add_charactor(key, var_list, value_list) == false) {
+        cout << "uninitalized var (" << key << ")" << endl;
+      }
     }
   }
+
   key = commond.substr(index_list[i] + 1);
+  // cout << "In 211 key is " << key << endl;
   if (var_list.find(key) != var_list.end()) {
     value_list.push_back(var_list[key]);
+    // cout << "In 214 push_vaule_back is " << var_list[key] << endl;
   }
   else {
-    return 1;
+    if (add_charactor(key, var_list, value_list) == false) {
+      cout << "uninitalized var (" << key << ")" << endl;
+    }
   }
   return 0;
 }
@@ -196,40 +259,35 @@ void print_value(vector<string> value_list) {
   }
   cout << endl;
 }
-bool add_charactor(string commond, unordered_map<string, string> var_list);
-bool add_multicharactor(string commond, unordered_map<string, string> var_list) {
-  bool status = true;
-  vector<int> index_list;
-  get_keyindex(commond, index_list);
-  size_t i = 0;
-  string key;
-  for (i = 0; i < index_list.size() - 1; i++) {
-    key = commond.substr(index_list[i] + 1, index_list[i + 1] - 1);
-    if (!add_charactor(key, var_list)) {
-      return false;
+
+void find_realvaule(string & commond,
+                    vector<string> & final_parameter,
+                    unordered_map<string, string> var_list) {
+  if (commond.find("$") != string::npos) {
+    string head = commond.substr(0, commond.find("$"));
+    vector<string> value_list;
+    if (get_value_list(commond.substr(commond.find("$")), var_list, value_list) == 0) {
+      commond = head;
+      for (size_t i = 0; i < value_list.size(); i++) {
+        commond = commond + value_list[i];
+      }
     }
   }
 
-  key = commond.substr(index_list[i] + 1);
+  //  cout << "commond is " << commond << endl;
 
-  if (!add_charactor(key, var_list)) {
-    status = false;
-  }
-  cout << endl;
-  return status;
-}
-
-bool add_charactor(string commond, unordered_map<string, string> var_list) {
-  bool status = false;
-  string true_var = commond;
-
-  unordered_map<string, string>::iterator p;
-  for (p = var_list.begin(); p != var_list.end(); p++) {
-    if (true_var.find(p->first) != string::npos) {
-      cout << p->second << true_var.substr(true_var.find(p->first) + (p->first).length());
-      status = true;
-      break;
+  for (size_t j = 0; j < final_parameter.size(); j++) {
+    if (final_parameter[j].find("$") != string::npos) {
+      string head = final_parameter[j].substr(0, final_parameter[j].find("$"));
+      vector<string> value_list;
+      if (get_value_list(
+              final_parameter[j].substr(final_parameter[j].find("$")), var_list, value_list) == 0) {
+        final_parameter[j] = head;
+        for (size_t i = 0; i < value_list.size(); i++) {
+          final_parameter[j] = final_parameter[j] + value_list[i];
+        }
+      }
     }
+    // cout << "parameter is " << final_parameter[j] << endl;
   }
-  return status;
 }

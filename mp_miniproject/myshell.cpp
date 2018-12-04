@@ -51,13 +51,17 @@ int main() {
     string parameters;
     divided(temp, commond, parameters);
     vector<string> final_parameter = getparmeter(parameters);
+
+    //find the real vaule for the var parameter
+    find_realvaule(commond, final_parameter, var_list);
+
     if (self_command_list.find(commond) != self_command_list.end()) {
       switch (self_command_list[commond]) {
         case 1:
           change_dir(final_parameter);
           break;
         case 2:
-          set_commond(var_list, parameters);
+          set_commond(var_list, parameters, final_parameter);
           break;
         case 3:
           export_varible(final_parameter, var_list);
@@ -69,19 +73,6 @@ int main() {
     }
     else if (commond.find('=') != string::npos) {  //set var
       assign_var(commond, final_parameter, var_list);
-    }
-    else if (commond.find('$') == 0) {
-      vector<string> value_list;
-      /*get value list of var list, eg: var1=1 var2=2 then excute $var1$var2, the value_list is 12. if there exist a var not in the var_list, then return 1*/
-      int rof = get_value_list(commond, var_list, value_list);
-      if (rof == 1) {
-        if (!add_multicharactor(commond, var_list)) {
-          cout << "Your input cotains a invaild var" << endl;
-        }
-      }
-      else {
-        print_value(value_list);
-      }
     }
     else {
       pid = fork();
