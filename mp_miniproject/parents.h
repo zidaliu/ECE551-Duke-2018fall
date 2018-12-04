@@ -86,7 +86,10 @@ void export_varible(vector<string> var, unordered_map<string, string> & var_list
 void set_commond(unordered_map<string, string> & var_list,
                  string var_value,
                  vector<string> final_parameters) {
-  cout << var_value << endl;
+  //  cout << var_value << endl;
+  // for (size_t i = 0; i < final_parameters.size(); i++) {
+  // cout << final_parameters[i] << endl;
+  // }
   if (var_value.find(' ') != string::npos) {
     size_t found = var_value.find(' ');
     string key = var_value.substr(0, found);
@@ -96,8 +99,14 @@ void set_commond(unordered_map<string, string> & var_list,
     bool status = false;
     for (size_t i = 0; i < value.length(); i++) {
       if (value[i] == ' ') {
-        temp = temp + value[i];
-        status = false;
+        if (i == 0) {
+          temp = temp + value[i];
+          status = false;
+        }
+        if (value[i - 1] != '\\' && (i >= 1)) {
+          temp = temp + value[i];
+          status = false;
+        }
       }
       else if ((value[i] != ' ') && (status == false)) {
         //        cout << final_parameters[k] << " is fp" << endl;
@@ -108,7 +117,6 @@ void set_commond(unordered_map<string, string> & var_list,
         }
       }
     }
-    // cout << temp << " is value" << endl;
     value = temp;
     if (legal_varname(key)) {
       var_list[key] = value;
