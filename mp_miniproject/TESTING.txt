@@ -1,0 +1,738 @@
+Please running 
+valgrind ./myshell
+
+
+Test Step1:
+
+(1).
+run exit
+    Then you will see the "myShell:/home/zl186/ece551/mp_miniproject$" becomes "zl186@ece551:~/ece551/mp_miniproject$", which means my program exit.
+
+(2)
+run control+D
+    Which it means I input "EOF"
+
+Then you will see the "myShell:/home/zl186/ece551/mp_miniproject$" becomes "zl186@ece551:~/ece551/mp_miniproject$", which means my program exit.
+
+This is test the actual exit status
+(3).
+    3.1 open another windows(named window2) to log in my account
+    3.2 run ./myshell in window1
+    3.3 run ps -u zl186 in window2 to see the pid of myshell, which is parent process.
+    3.4 run ./myshell in window1 again(which is executed in the opened myShell)
+    3.5 run ps -u zl186 in window2 to see the pid of the new myshell( now there you can see the 2 child), which is children process.
+    3.6 run kill -n "child process pid in 3.5" in window2, which will kill the children myshell by signal n.
+
+Then you see the "Program was killed by signal" n in the window 1. Which means the children was kill by specific signal n. Now you are in the parent myshell.
+
+
+Test Step2:
+
+(4)
+run: ls
+
+    Then You will see a list of files and directories in the current directory,
+    followed by a line(Program exited with status 0).
+
+Reason: It is because when there is no "/" in your command. It will search the command in the env in "PATH", then find ls in /bin and execute it.
+
+(5)
+run: za
+
+Output: 
+    "Command za not found"
+    Program exited with status 0
+
+Reason: It is because when there is no "/" in your command.It will search the command in the env in "PATH", but there is no command named "za", so then it will tell you the command is not found.
+
+
+(6)
+run: /bin/asd
+
+Output: 
+    "Command /bin/asd not found"
+    Program exited with status 0
+
+Reason: It is because when there is "/" in your command.It will search the command in /bin, but there is no command named "asd", so then it will tell you the command is not found.
+
+(7)
+run: ./README
+Output: 
+    execv failed
+    errno is Permission denied
+
+Reason: This is a test of the relative address. Although, there exist the file README. But it is not a executable file. So, when call the 
+
+(8)
+run: /bin/ls
+
+Then You will see a list of files and directories in the current directory,
+followed by a line(Program exited with status 0).
+Reason: It is because when there is "/" in your command. And this is a test of the absolute address. It will directly execute the program use the absolute address.
+
+(9)(input a parameter)
+run: ls ../
+Output: you will see all my dirs is ece551
+Program exited with status 0
+
+Reason: This because you input a parameter "../" which is a relative address. Then list files in the parent folder of current program.
+
+(10)(input multi parameter)
+run: ls ../ /bin
+Output: 
+../:
+all the files in ece551
+/bin:
+all the files in bin
+Program exited with status 0
+
+Reason: This because you input a first parameter "../" which is a relative address. Then list files in the parent folder of current program. Then you put /bin, which is a absolute address, which will list all the files in /bin.
+
+
+(11)(input invalid parameter)
+run: ls asd
+output:ls: cannot access 'asd': No such file or directory
+
+Reason: This because you input a first parameter "asd" is not a valid fire or directory. So it is the output that we expected.
+
+
+(11_plus)
+run:
+    cd test
+    ./sortLines test.txt
+
+output is:
+    abvc
+    bbdc
+    cabd
+    dacb
+
+This is right, because ./sortLines is an executable file in 053 assignment. And I copy it into test file. And it can be executed as normal.
+
+(12~19) is for test parsing.
+
+(12)
+run:
+echo abc
+output is:
+abc
+
+Reason: The easiest condition. No space in the iput or "\ ".
+
+(13).
+run:
+echo a b 23
+output is:
+a b 23
+
+Reason: 
+This is correct because /bin/echo is run, with three arguments:
+"a" ,"b", "23".  echo prints the arguments and
+exits with status 0
+
+(14)
+run:
+echo a b        23
+output is:
+a b 23
+
+Reason: 
+This is correct because /bin/echo is run, with three arguments:
+"a" ,"b", "23".  echo prints the arguments and
+exits with status 0, although there are many " " between "b" "23". But the parse function ignored it.
+
+(15)
+run:
+echo      a b        23
+the output is:(The same as 13)
+a b 23
+
+Reason: 
+This is correct because /bin/echo is run, with three arguments:
+"a" ,"b", "23".  echo prints the arguments and
+exits with status 0, although there are many " " before "a " and between "b" "23". But the parse function ignored it.
+
+(16)
+run:
+echo a b\ \ 23
+output is:
+a b  23
+
+Reason: 
+This is correct because /bin/echo is run, with two arguments:
+"a" ,"b  23".  echo prints the arguments and
+exits with status 0, "\ " means a real space, so it will not be ignored. And the " " between "a" "b" will be ignored.
+
+(17)
+run:
+echo a\  b c \ d
+output is:
+a  b c  d
+
+Reason:
+This is correct because /bin/echo is run, with two arguments:
+"a " ,"b", "c", " d".  echo prints the arguments and
+exits with status 0, "\ " means a real space, so it will not be ignored. And the " " between "b" "c" will be ignored.
+
+
+(18)
+run:
+echo a\\\\d
+output is:
+ab
+
+Reason:
+This is correct because in my implementation a backslash followed by any character rather than " " will be ignored. Which is a reasonable way told by Drew in a piazza
+
+(19)
+run:
+echo \
+
+Reason:
+(the backslash is the last character on the line).
+You will see a blank line is printed.
+This is correct because in my implementation, a backslash followed by nothing
+translates to nothing.
+
+Test step3
+(20)
+When executing myshell, you can see the current directory before $ such as:
+
+myShell:/home/zl186/ece551/mp_miniproject$
+
+Reason:
+This is right, because the current ./myshell is in the directory mp_miniproject. So, it will print the current address.
+
+(21)
+run:
+cd
+
+output:
+to a new line(myShell:/home/zl186/ece551/mp_miniproject$)
+
+Reason:
+This is right, because when you input nothing. The command shell just goes to a newline for the new input command.
+
+(22)
+run:
+cd ../
+
+output:
+myShell:/home/zl186/ece551$
+
+Reason:
+This is the test for change to the relative directory. This is right becasue we originally in the mp_miniproject directory. Then ../ means we change it's parents fold. which us ece551. And then if you use ls command, you can see all the files and directories in ece551.
+
+(23)
+run:
+cd ../
+
+output:
+myShell:/home/zl186/ece551$
+
+Reason:
+This is the test for change to relative dictory. This is right becasue we orignially in the mp_miniproject dictorary. Then ../ means we change it's parents fold. which us ece551. And then if you use ls command, you can see all the files and dictories in ece551.
+
+
+(24)
+run:
+cd /bin
+
+output:
+myShell:/bin$
+
+Reason:
+This is the test for change to absolute dictory. This is right becasue we orignially in the mp_miniproject dictorary. Then /bin means we change to the /bin. And then if you use ls command, you can see all the files and dictories in /bin.
+
+(25)
+run:
+cd /root
+
+output:
+Permission denied
+
+the working directory is not changed (unless you have the permission
+to access /root)
+
+Reason:
+This is correct because when myShell fails to change the directory, it reports an error and stays where it was.
+
+
+(26)
+run:
+cd /asd
+
+output:
+No such file or directory
+
+(the working directory is not changed)
+
+Reason:
+This is correct because when myShell fails to change the directory, there is no dictory named /asd.
+
+(27)
+(you can run cd /home/zl186/ece551/mp_miniproject to mp_miniproject easily)
+
+then run:
+cd ./README
+
+output:
+Not a directory
+
+(the working directory is not changed)
+
+Reason:
+This is correct because when myShell fails to change the directory, ./README is a file not a directory.
+
+
+(28)
+run:(more than one directory)
+cd ../ ./
+
+output:
+You input multi_dir, input again
+
+(the working directory is not changed)
+
+Reason:
+This is correct because In my inplementation, when there is more than one directory, it is an invaild input. Beacause, every time you can only change to ONE specific directory.
+
+
+("=" assignment the varible)
+(29)
+run:
+var1=zida96
+echo $var1
+
+output:
+zida96
+Program exited with status 0
+
+Reason:
+This is right, because we assign the zida96 into var1. echo $var1 will get the value in the varible.
+
+(30)
+run:
+var1=
+echo $var1
+
+output:
+
+Program exited with status 0
+
+Reason:
+You will see a blankLine with nothing in it. This is right, because we assign nothing into var1. echo $var1 will get nothing.
+
+
+(31)
+run:
+var1=
+echo $var1
+
+output:
+
+Program exited with status 0
+
+Reason:
+You will see a blankLine with nothing in it. This is right, because we assign nothing into var1. echo $var1 will get nothing.
+
+
+(32)
+run:
+var1= zida
+echo $var1
+
+output:
+
+same as (30)
+
+Reason:
+You will see a blankLine with nothing in it. This is right, because the "=" do not support space. In my implementation if "=" follows a space, even if there are other charactors.
+
+(33)
+run:
+var-=zida96
+
+output:
+
+var- is an ilegal var name
+
+Reason:
+This is right because, the variable name must be a combination of letters (case sensitive), underscores, and numbers, (e.g., PATH, xyz, abc42, my_var). And here "-" is not a legal varible name.
+
+(34)
+run:
+var=zida96
+var=ece551
+echo $var
+
+output:
+ece551
+Program exited with status 0
+
+Reason:
+This is right, because when you re-assignment your varible, you should replace the previous one.
+
+(35)
+run:
+var=at
+c$var /home/zl186/ece551/mp_miniproject/README
+
+output:
+The content in the ./README will show
+
+Reason:
+This is right, because If the user writes $varname on the command line, your shell should replace it with the current value of that var viable.
+
+
+(36)
+run:
+var=zida96
+$var=happy
+echo $zida96
+
+output:
+happy
+Program exited with status 0
+
+Reason:
+This is right, because firstly we assign the var in zida96. Although our next input is $var(which seems to contain ilegal sign"$") it also means zida96. So, actually, we assign zida96 as happy. This is the reason that why we run echo $zida96, we will get happy even if zida96 is not explictly assigned.
+
+
+(37)
+run:
+    var=zida96
+    echo $var-
+
+output:
+    zida96-
+    Program exited with status 0
+
+Reason:
+This is right, because $var followed by the charactors that we want it to follow is legal. Which is useful when you use your var to replace the thing you want in your commmand.
+
+(38)
+run:
+var1=a var2=b var3=c
+echo $var1 $var2 $var3
+
+output:
+a b c
+Program exited with status 0
+
+Reason:
+This is right and my shell supports multiple inputs.
+
+(39)
+run:
+var1=a var2=b var3=c
+echo $var1$var2$var3
+
+output:
+abc
+Program exited with status 0
+
+Reason:
+my shell support multiple inputs.
+
+(40)
+run:
+var1=a var2=b
+echo $var1-$var2!
+
+output:
+a-b!
+Program exited with status 0
+
+Reason:
+This is right and my shell supports multiple inputs. And the following charactor is also can be printed.
+
+
+(41)
+run:
+var=a
+var1=b
+echo $var1
+
+output:
+b
+Program exited with status 0
+
+Reason:
+This is right. when run echo $var1. Will it output "a1" or "b". In my implementation, if there is a varible name exactlly "var1", it will give the priority to it, if not then it will seach for the substring of the input varible name in the varible pool and add the plus charactor behind it if find it.
+
+
+(42)
+run:
+set var zida  96
+echo $var
+
+output:
+zida  96
+
+Reason:
+This is right, because compared to "=", set command is sensitive to the " ". So no matter how many " " you input into it, it will keep those " ".
+
+(43)
+run:
+    set var 1
+    set var1 zida $var
+    echo $var1
+
+output:
+    zida 1
+
+Reason:
+This is right, because var is a varible and $var will be replaced as 1 first. Then we assign the var1 as zida 1. So the final output is zida 1.
+
+(44)
+run:
+    set x zida\ \ 96
+    echo $x
+
+output:
+    the output is the same as (41).
+
+
+Reason:
+This is right, because compared to "\ " still refers " ". So, the output should be the same as 41.
+
+(45)
+run:
+
+    set x x
+    set x $x$x
+    echo $x
+
+output 
+
+    xx
+
+This is correct because the first command sets x to "x".
+In the second command, each $x is expanded to its value "x".
+So it is the same as "set x xx". In the third command, $x is expanded to its value "xx".So it is the same as "echo xx".
+
+(46):
+run:
+    set var
+
+output:
+    set commond need a value for your varible
+
+This is correct because if you want to set a varible you have to have a value. So in my implementation, if you don't have a value. My program will give you a hint to set a value for your variable.
+
+
+(47):
+run:
+    set 5.3 zida96
+
+output:
+    5.3 is an ilegal var name
+
+This is right because, the variable name must be a combination of letters (case sensitive), underscores, and numbers, (e.g., PATH, xyz, abc42, my_var). And here "." is not a legal varible name.
+
+
+(48):
+run:
+    set x x
+    set $x zida
+
+output:
+    $x is a ilegal var name
+
+This is right because, because although x is a varible but in my implementation, in set command. $x will not be considered as a legal varible name because when we use set, the value of the varible could have the " " in itself. If we use the value to be a new varible, it can cause confusion. So, in set command, we have to explicitly to set te varible name right.
+
+(49)
+Run
+
+    set x zida
+    echo ...$x...
+
+You will see 
+
+    ...zida...
+
+This is correct because in the second command, the longest sequence following $ that can be a valid variable name is "x", so $x is expanded to its value "zida", and the second command is the same as "echo ...zida...".
+
+(50)
+Now you use "ls" command and see that there is a txt file named "my zida.txt" in mp_miniproject
+
+Run
+    
+    cat my\ zida.txt
+
+You will see the content 
+
+    zida
+    Program exited with status 0
+
+Then:
+    
+    set var my\ zida.txt
+
+Then:
+    cat $var
+
+You will see the content the same as cat my\ zida.txt
+    zida
+    Program exited with status 0
+
+This is correct because it cat $var is the same as cat my\ zida.txt. 
+
+(51)
+Run:
+    echo $myvar
+
+You will see:
+    uninitalized var (myvar)
+    $myvar
+    Program exited with status 0
+
+This is correct because we don't assign any vaule into myvar, so the echo will print out $myvar. But In my implementation, if we decided a $, but find that there is no var has been recorded, it will remind the user that the var is an uninitialized var.
+
+(52)
+Run:
+    export
+
+you will see:
+    export at least one var
+
+This is correct because we have to export at least one var. So in my implementation, if there is no var. My program will remind you to set at least a var.
+
+
+(53)
+Run:
+    export asd x...
+
+you will see:
+    please set (asd) first!
+    please set (x...) first!
+
+This is correct because we have to export a var that has been assigned. if the var hasn't been assigned, then my program will remind you to set it first.(Here my program support multi-export)
+
+
+(54)
+Run:
+    set x zida
+    y=9610
+    env
+
+you will see:
+    Many env varibles, but there is no x=zida or y=9610
+
+This is correct because you haven't exported them to your environment. 
+
+
+Run:
+    set x zida
+    y=9610
+    export x y
+    env
+
+you will see:
+    Many env variables, there have x=zida and y=9610 at the final two lines of the file.
+
+This is correct because you have exported them to your environment. 
+
+
+(55) 
+Run:
+
+    set x x
+    export x
+    set x xx
+    env
+
+You will see a list of environment variables, and x is in the list,and its value is still"x"
+
+This is correct because although x has been modified if you not export it, it should not be placed in the environment for other programs.
+
+
+(56) 
+Run:
+
+    set x x
+    export x
+    set x xx
+    export x
+    env
+
+You will see a list of environment variables, and x is in the list,and its value is "xx"
+
+This is correct because x has been modified, and we export it, it should be placed in the environment for other programs.
+
+
+(57)
+Run:
+    set PATH nopath
+    export PATH
+    ls
+
+output:
+    Can not open dir nopath
+    Command ls not found
+
+NOTE: please restore the PATH variable now or input exit then run ./myshell again for the next test case
+
+This is correct because the value of PATH determines where myShell searches for an executable.  When PATH is set to "nopath", it cannot be opened, and it cannot find the executable named "ls".
+
+
+(58)
+Run:
+    set x x
+    export x
+    ./myshell
+    env
+
+output:
+    You will see a list of environment variables, and x is in the list,and its value is "x"
+
+This is correct because when you set a var and export it to the environment, any program that executed later will use the var.
+
+(if you want to exit the children ./myshell, you can use "exit" to return to the parent ./myshell)
+
+(59)
+Run:
+    inc var var1
+    echo $var $var1
+
+output:
+    1 1
+
+This is correct because If var is not currently set, or does not represent a number in base10, then the initial value is treated as 0 (and thus incremented to 1)(Here my program support multi-inc)
+
+(60)
+Run:
+    inc
+
+output:
+    inc at least one var
+
+
+This is correct because we have to inc at least one var. So in my implementation, if there is no var. My program will remind you to set at least a var.
+
+(61)
+Run:
+    set x zida9610
+    set y 9610
+    inc x y
+    echo $x $y
+
+Output is:
+    1 9611
+
+This is correct because If var is not currently set, or does not represent a number in base10, then the initial value is treated as 0 (and thus incremented to 1, "zida9610" although contains the number but still contains at least a non-10based character)(Here my program support multi-inc)
+
+
+(62)
+Run:
+    set x zida9610
+    inc x x x
+
+
+Output is:
+    3
+
+This is correct because If var is not currently set, or does not represent a number in base10, then the initial value is treated as 0 (and thus incremented to 1, then we inc it for two more times）
+
+

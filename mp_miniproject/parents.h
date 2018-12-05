@@ -52,7 +52,7 @@ void inc_varible(vector<string> var, unordered_map<string, string> & var_list) {
   }
   for (size_t i = 0; i < var.size(); i++) {
     if (var_list.find(var[i]) == var_list.end()) {
-      cout << "please set (" << var[i] << ") first!" << endl;
+      var_list[var[i]] = "1";
     }
     else {
       if (isNum(var_list[var[i]])) {  // is a number based on 10
