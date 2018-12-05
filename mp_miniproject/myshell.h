@@ -171,7 +171,7 @@ class Child : public Process
     dir = opendir(path);
     if (NULL == dir) {
       cout << "Can not open dir " << path << endl;
-      exit(1);
+      return false;
     }
     /* read all the files in the dir ~ */
     while ((filename = readdir(dir)) != NULL) {
