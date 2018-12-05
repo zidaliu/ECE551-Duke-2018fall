@@ -13,10 +13,11 @@
 #include <vector>
 using namespace std;
 extern char ** environ;
+/*Process has two child class, Parents and Child*/
 class Process
 {
  protected:
-  pid_t pid;
+  pid_t pid;  // record current pid
   Process(pid_t a) : pid(a){};
 };
 
@@ -26,12 +27,12 @@ class Parents : public Process
   Parents(pid_t pd) : Process(pd) {
     int status;
     // printf("This is the parents %d\n", getpid());
-    waitpid(pid, &status, 0);  //等待子进程退出
-    if (WIFEXITED(status)) {   //正常退出
+    waitpid(pid, &status, 0);  //wait for it's children process exit
+    if (WIFEXITED(status)) {   //exit normally
       printf("Program exited with status %d\n", WEXITSTATUS(status));
     }
     else {
-      if (WIFSIGNALED(status)) {  //查看被什么信号关闭
+      if (WIFSIGNALED(status)) {  //check the children process was closed by what kind of signal
         printf("Program was killed by signal %d\n", WTERMSIG(status));
       }
     }
@@ -41,9 +42,8 @@ class Parents : public Process
 class Child : public Process
 {
  private:
-  string route;
-  vector<string> parameter_list;
-  //  unordered_map<string, int> self_command_list;
+  string route;  //this is the command route which can be a relative route or a absolute one
+  vector<string> parameter_list;  //record the parmeters
 
  public:
   Child(pid_t pd, string a) : Process(pd), route(a), parameter_list(0) {
@@ -56,34 +56,34 @@ class Child : public Process
   }
 
   void execute() {
-    if (!judge(route)) {  //如果不含有斜杠，就在环境变量中找
-      int flag = 0;
+    if (!judge(route)) {  //if there is no "/" then find the command in PATH
+      int status = 0;     // to record whether we can find it in PATH
       char * env = getenv("PATH");
-      //      cout << "env is " << env << endl;
-      vector<string> env_list = split(env);
+      vector<string> env_list = split(env);  //split the PATH by ":"
       for (vector<string>::iterator it = env_list.begin(); it != env_list.end(); ++it) {
         const char * address = (*it).data();
-        if (findCommand(address, route)) {  //是否能在指定地址中找到命令，如果找到flag变成1
-          flag = 1;
+        if (findCommand(
+                address,
+                route)) {  //if we can find the command in the directory then set status to 1
+          status = 1;
           string ss_address = address;
           string ss_route = route;
           string total_address = ss_address + '/' + ss_route;
-          //          cout << "total_address is " << total_address << endl;
           char ** argv = new char *[parameter_list.size() + 2];
-          construct_parameter(argv, route, parameter_list);
+          construct_parameter(argv, route, parameter_list);  //construct argv for execve
           execve(total_address.c_str(), argv, environ);
           free_pm(argv);
         }
       }
-      if (flag == 0) {  //没到到flag仍然为0
+      if (status == 0) {  // we cannot find this command in all the directories in PATH
         cout << "Command " << route << " not found" << endl;
       }
     }
-    else {  //含有斜杠
+    else {  // if there is "/", then excute it directly
       if (check_command(route)) {
         char ** argv = new char *[parameter_list.size() + 2];
         construct_parameter(argv, route, parameter_list);
-        int sof;  //successful or fail
+        int sof;  //excute it successful or fail
         sof = execve(route.c_str(), argv, environ);
         if (sof == -1) {  //fail
           cout << "execv failed" << endl;
@@ -95,6 +95,7 @@ class Child : public Process
     }
   }
 
+  /*this fuction is to check whether your input command is an excutable file */
   bool check_command(string route) {
     bool status = true;
     struct stat st;
@@ -104,30 +105,32 @@ class Child : public Process
       status = false;
     }
     else {
-      if (S_ISDIR(st.st_mode)) {
+      if (S_ISDIR(st.st_mode)) {  // if you input is a directory
         cout << route << " is a dir" << endl;
         status = false;
       }
       else if (!S_ISREG(st.st_mode)) {
-        cout << route << " not such file or dir" << endl;
+        cout << route << " not such file or dir" << endl;  // if you input is not a regular file
         status = false;
       }
     }
     return status;
   };
 
+  /*this function is to construct the parameters that can be used in execve function*/
   void construct_parameter(char **& a, string route, vector<string> parameter_list) {
-    char * cstr = new char[route.length() + 1];
+    char * cstr = new char[route.length() + 1];  //+1 is because you cannot ignore "\0" in c style
     strcpy(cstr, route.c_str());
-    a[0] = cstr;
+    a[0] = cstr;  // the first element in argv should be the command
     for (size_t i = 0; i < parameter_list.size(); i++) {
       char * parameter_address = new char[parameter_list[i].length() + 1];
       strcpy(parameter_address, parameter_list[i].c_str());
-      a[i + 1] = parameter_address;
+      a[i + 1] = parameter_address;  //store parmaters in following elements in argv
     }
     a[parameter_list.size() + 1] = NULL;
   }
 
+  /*free all the allocated memory after excuting*/
   void free_pm(char **& a) {
     int i = 0;
     while (a[i] != NULL) {
@@ -136,26 +139,27 @@ class Child : public Process
     }
     delete[] a;
   }
-
+  /*judge whether your command contains "/"*/
   bool judge(string a) {
     string s = a;
     string::size_type idx = s.find("/");
-    if (idx == string::npos) {  //不存在
+    if (idx == string::npos) {  //not exist
       return false;
     }
-    else {  //存在
+    else {  //exist
       return true;
     }
   }
 
+  /*split PATH by ":" */
   vector<string> split(char * a) {
-    vector<string> single_address;
+    vector<string> single_address;  //record the directories in PATH
     const char s[1] = {':'};
     char * token;
     char * saveptr1;
-    /* 获取第一个子字符串 */
+    /* get first substring */
     token = strtok_r(a, s, &saveptr1);
-    /* 继续获取其他的子字符串 */
+    /* get other substring */
     while (token != NULL) {
       string ss = token;
       single_address.push_back(ss);
@@ -164,10 +168,11 @@ class Child : public Process
     return single_address;
   }
 
+  /*whether we can find the command in a directory */
   bool findCommand(const char * path, string instruct) {
     struct dirent * filename;  // return value for readdir()
     DIR * dir;
-    bool condition = false;
+    bool condition = false;  // set condition as false means we cannot find it by default
     dir = opendir(path);
     if (NULL == dir) {
       cout << "Can not open dir " << path << endl;
@@ -180,7 +185,7 @@ class Child : public Process
       string temp1 = filename->d_name;
       string temp2 = instruct;
       if (temp1 == temp2) {
-        condition = true;
+        condition = true;  //find the command in the directory
         break;
       }
     }
