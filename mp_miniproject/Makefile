@@ -1,5 +1,5 @@
-myshell: myshell.cpp
-	g++ -ggdb3 -Wall -Werror -pedantic -o myshell myshell.cpp -std=gnu++11
+myShell: myshell.cpp
+	g++ -ggdb3 -Wall -Werror -pedantic -o myShell myshell.cpp -std=gnu++11
 
 
 parse: parse.cpp
@@ -7,6 +7,6 @@ parse: parse.cpp
 
 
 clean:
-	rm myshell *~
+	rm myShell *~
 	rm parse *~
 
