@@ -16,7 +16,7 @@ For questions 1--3, consider this tree as an AVL tree.
 For questions 4--5, consider this tree as a Red/Black tree.
 
 
-1. If you were to add 4 to this tree, what rotation would be required?
+1. If you were to add 4 to this tree, what rotation would be required?(B)
 
 A. A single rotation at 8
 B. A single rotation at 16
@@ -29,7 +29,7 @@ H. A dobule rotation at 64
 I. No rotation is required.
 J. Some other rotation (not listed here) is required.
 
-2.  If you were to add 67 to the original tree, what rotation would be required?
+2.  If you were to add 67 to the original tree, what rotation would be required?(K)
 
 A. A single rotation at 69.
 B. A single rotation at 70.
@@ -44,7 +44,7 @@ J. A double rotation at 64
 K. No rotation is required.
 L. Some other rotation (not listed here) is required.
 
-3. If you were to add 47 to the original tree, what rotation would be required?
+3. If you were to add 47 to the original tree, what rotation would be required?(G)
 
 A. A single rotation at 50.
 B. A single rotation at 32.
