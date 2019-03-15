@@ -71,9 +71,15 @@ class Child : public Process
           string total_address = ss_address + '/' + ss_route;
           char ** argv = new char *[parameter_list.size() + 2];
           construct_parameter(argv, route, parameter_list);  //construct argv for execve
-          execve(total_address.c_str(), argv, environ);
+          int sof;
+          sof = execve(total_address.c_str(), argv, environ);
+          if (sof == -1) {  //fail
+            cout << "execv failed" << endl;
+            char * mesg = strerror(errno);
+            cout << "errno is " << mesg << endl;
+           }
           free_pm(argv);
-        }
+       }
       }
       if (status == 0) {  // we cannot find this command in all the directories in PATH
         cout << "Command " << route << " not found" << endl;
